@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>追风少年</title>
+    <meta name="keywords" content="关键字">
+    <meta name="description" content="网页广告描述">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        ul, ol, li {
+            list-style: none;
+        }
+        #wrap{
+            width:200px;
+            height:200px;
+            margin:auto;
+            border:1px solid red;
+            text-align:center;
+        }
+    </style>
+</head>
+<body>
+<div id="wrap"></div>
+
+<script>
+    var idwrap = document.getElementById("wrap");
+    idwrap.onclick = function(){
+        idwrap.innerHTML = "<a href=''>想什么呢</a>";
+        var oA =document.getElementsByTagName("a");
+        oA[0].style.cssText = "font-size:20px;color:red;";
+    }
+
+</script>
+</body>
+</html>

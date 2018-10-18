@@ -48,6 +48,20 @@
 
 ​	var   let   const	都可以声明变量
 
+​	var  函数作用域的变量
+
+​	let	块作用域的变量
+
+​	const	常量,在页面中出现就不会改变他的值,是多少就是多少
+
+​		const	字母大写
+
+##### 变量的命名
+
+​	1.不能数字开头
+
+​	2.见名知意
+
 ##### 变量的作用
 
 ​	let = 
@@ -72,7 +86,7 @@
 
 ​		document.getElementsByClassName()
 
-​		数组从0开始		class[0]
+​		数组从0开始  		class[0]
 
 ​	通过标签名
 
@@ -81,6 +95,12 @@
 ​	通过name	有names属性的元素节点   input		
 
 ​		document.getElementsByName()
+
+​	通过querySelector	满足条件的第一个元素
+
+​		document.querySelector()		单个元素,通过css选择器获取
+
+​	通过querySelectorAll	满足条件的所有元素
 
 ##### 添加内容
 
@@ -102,6 +122,23 @@
 
 ​	onload = function(){}		加载完毕
 
-​	
+##### 1.加载顺序
 
-​	
+​	从上往下加载执行
+
+​	读取脚本然后立即执行
+
+
+
+##### script获取元素失败的解决方案
+
+​	1.需要放到元素的后面\</body>前面
+
+​	2.等待页面加载完成之后才获取元素		window.onload=function(){	}
+
+​	3.script延后执行    defer(最后执行)   async(读取完立即执行) 
+
+#####我们现在可以做什么?
+
+#####	获取元素.点击事件,页面元素添加内容,修改样式 
+

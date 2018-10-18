@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>追风少年</title>
+    <meta name="keywords" content="关键字">
+    <meta name="description" content="网页广告描述">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        ul, ol, li {
+            list-style: none;
+        }
+        #wrap{
+            position:relative;
+            float:left;
+            width:200px;
+            height:300px;
+            margin:50px 100px;
+            border:1px solid #ddd;
+        }
+        #box{
+            position:relative;
+            float:left;
+            width:200px;
+            height:300px;
+            margin:50px 100px;
+            border:1px solid #ddd;
+        }
+
+        input{
+            position:absolute;
+            bottom:0;
+            left:0;
+            height:20px;
+            width:164px;
+            border-radius:5px;
+            outline:none;
+        }
+        span{
+            position:absolute;
+            bottom:0;
+            right:0;
+            height:24px;
+            line-height:24px;
+            background-color:skyblue;
+        }
+        li{
+            float:right;
+            max-width:150px;
+            min-width:150px;
+            min-height:24px;
+            margin:5px 0;
+            text-align:right;
+            word-break:break-all;
+            border-radius:5px;
+            /*background-color:#ddd;*/
+        }
+        i{
+            font-style:normal;
+            background-color: #ddd;
+            border-radius:5px;
+            padding:4px;
+        }
+
+    </style>
+</head>
+<body>
+<div id="wrap">
+    <ul id="list1">
+        <!--<li><i>1</i></li>-->
+    </ul>
+    <input type="text"><span id="btn1">发送</span>
+</div>
+<div id="box">
+    <ul id="list2">
+        <!--<li>aaa</li>-->
+    </ul>
+    <input type="text"><span id="btn2">发送</span>
+</div>
+
+<script>
+    let btn1 = document.getElementById("btn1");
+    let btn2 = document.getElementById("btn2");
+    let input = document.getElementsByTagName("input");
+    let list1 = document.getElementById("list1");
+    let list2 = document.getElementById("list2");
+    btn1.onclick = function(){
+        list1.innerHTML += "<li><i>" + input[0].value + "</i></li>";
+        list2.innerHTML += "<li style='float:left;text-align:left;'><i>" + input[0].value +"</i></li>";
+        input[0].value = "";
+    }
+    btn2.onclick = function(){
+        list2.innerHTML += "<li><i>" + input[1].value +"</i></li>";
+        list1.innerHTML += "<li style='float:left;text-align:left;'><i>"+ input[1].value + "</i></li>";
+        input[1].value = "";
+    }
+</script>
+</body>
+</html>

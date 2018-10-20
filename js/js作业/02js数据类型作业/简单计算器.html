@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>追风少年</title>
+    <meta name="keywords" content="关键字">
+    <meta name="description" content="网页广告描述">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        ul, ol, li {
+            list-style: none;
+        }
+        #wrap{
+            width:280px;
+            height:360px;
+            margin:100px auto;
+            border:1px solid #ddd;
+        }
+        #content{
+            height:59px;
+            padding:10px;
+            border-bottom:1px solid #ddd;
+            text-align:right;
+            line-height:60px;
+            font-size:20px;
+            color:blue;
+        }
+        #number{
+            float:left;
+            width:209px;
+            height:280px;
+            border-right:1px solid #ddd;
+        }
+        #number ul{
+            display:flex;
+            flex-flow:row wrap;
+        }
+        #number li{
+            flex:1 1 auto;
+            width:32%;
+            height:68px;
+            text-align:center;
+            line-height:70px;
+            border:1px solid #ddd;
+        }
+        #number li:hover{
+            background-color:skyblue;
+            cursor:pointer;
+        }
+        #info{
+            display:flex;
+            height:280px;
+            flex-flow:column nowrap;
+
+        }
+        #info div{
+            flex:1 1 auto;
+            height:20%;
+            border:1px solid #ddd;
+            text-align:center;
+            line-height:54px;
+        }
+        #info div:hover{
+            background-color:skyblue;
+            cursor:pointer;
+        }
+    </style>
+</head>
+<body>
+<div id="wrap">
+    <div id="content"   placeholder="0"></div>
+    <div id="number">
+        <ul>
+            <li>7</li>
+            <li>8</li>
+            <li>9</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>0</li>
+            <li>.</li>
+            <li>=</li>
+        </ul>
+    </div>
+    <div id="info">
+        <div>C</div>
+        <div>/</div>
+        <div>*</div>
+        <div>-</div>
+        <div>+</div>
+    </div>
+</div>
+
+<script>
+    let content = document.getElementById("content");
+    let number  = document.querySelectorAll("#number li");
+    let info = document.querySelectorAll("#info div");
+    number[0].onclick = function(){
+        content.innerHTML += number[0].innerHTML;
+    }
+    number[1].onclick = function(){
+        content.innerHTML += number[1].innerHTML;
+    }
+    number[2].onclick = function(){
+        content.innerHTML += number[2].innerHTML;
+    }
+    number[3].onclick = function(){
+        content.innerHTML += number[3].innerHTML;
+    }
+    number[4].onclick = function(){
+        content.innerHTML += number[4].innerHTML;
+    }
+    number[5].onclick = function(){
+        content.innerHTML += number[5].innerHTML;
+    }
+    number[6].onclick = function(){
+        content.innerHTML += number[6].innerHTML;
+    }
+    number[7].onclick = function(){
+        content.innerHTML += number[7].innerHTML;
+    }
+    number[8].onclick = function(){
+        content.innerHTML += number[8].innerHTML;
+    }
+    number[9].onclick = function(){
+        content.innerHTML += number[9].innerHTML;
+    }
+    number[10].onclick = function(){
+        content.innerHTML += number[10].innerHTML;
+    }
+    number[11].onclick = function(){
+        content.innerHTML = eval(content.innerHTML);
+    }
+    info[0].onclick = function(){
+        content.innerHTML = null;
+
+    }
+    info[1].onclick = function(){
+        content.innerHTML += info[1].innerHTML;
+    }
+    info[2].onclick = function(){
+        content.innerHTML += info[2].innerHTML;
+    }
+    info[3].onclick = function(){
+        content.innerHTML += info[3].innerHTML;
+    }
+    info[4].onclick = function(){
+        content.innerHTML += info[4].innerHTML;
+    }
+</script>
+</body>
+</html>

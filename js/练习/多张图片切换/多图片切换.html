@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>49期</title>
+    <meta name="keywords" content="关键字">
+    <meta name="description" content="网页广告描述">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        a {
+            text-decoration: none;
+            color: #fff;
+        }
+
+        ul, ol, li {
+            list-style: none;
+        }
+        #wrap{
+            width:600px;
+            height:500px;
+            margin:50px auto;
+            user-select:none;
+        }
+        #wrap .img{
+            position:relative;
+            width:100%;
+            height:400px;
+            text-align:center;
+        }
+        #wrap .img .list li{
+            display:none;
+            position:absolute;
+        }
+        #wrap .img .list img{
+            width:600px;
+            height:400px;
+        }
+        #wrap .img .list li.show{
+            display:block;
+        }
+        #wrap .img .dec{
+            position:absolute;
+            left:0;
+            width:100%;
+            height:30px;
+            color:#fff;
+            line-height:30px;
+            background-color:rgb(0,0,0);
+            background-color:rgba(0,0,0,.5);
+        }
+        #wrap .img .dec1{
+            top:0;
+        }
+        #wrap .img .dec2{
+           bottom:0;
+        }
+        #btn div{
+            position:absolute;
+            top:50%;
+            width:30px;
+            height:30px;
+            margin-top:-15px;
+            line-height:30px;
+            background-color:rgb(0,0,0);
+            background-color:rgba(0,0,0,.5);
+            color:#fff;
+            font-weight:bold;
+            cursor:pointer;
+        }
+        #btn .left{
+            left:0;
+        }
+        #btn .right{
+            right:0;
+        }
+        #wrap .tab{
+            width:100%;
+            height:30px;
+            margin-top:20px;
+            text-align:center;
+        }
+        #wrap .tab  span{
+            display:inline-block;
+            width:100px;
+            height:30px;
+            line-height:30px;
+            color:#fff;
+            background-color: #999;
+        }
+        #wrap .tab .active{
+            background-color: #f60;
+        }
+    </style>
+</head>
+<body>
+<div id="wrap">
+    <div class="img">
+        <!--上部图片区域-->
+        <ul class="list">
+            <li class="show"><img src="images/1.jpg" alt=""></li>
+            <li><img src="images/2.jpg" alt=""></li>
+            <li><img src="images/3.jpg" alt=""></li>
+            <li><img src="images/4.jpg" alt=""></li>
+            <li><img src="images/5.jpg" alt=""></li>
+        </ul>
+        <!--图片描述区域-->
+        <p class="dec1 dec"><span>1</span>/5</p>
+        <p class="dec2 dec">第一张图片</p>
+        <!--  左右两个切换按钮 -->
+        <div id="btn">
+            <div class="left"> < </div>
+            <div class="right"> > </div>
+        </div>
+    </div>
+    <div class="tab">
+        <span class="active">单边切换</span>
+        <span>循环切换</span>
+    </div>
+</div>
+
+<script>
+    //获取元素
+    let aBtn = document.querySelectorAll("#btn div"),
+        aImg = document.querySelectorAll("#wrap .img .list li"),
+        aDec = document.querySelectorAll("#wrap .img .dec"),
+        oDec1 =aDec[0].getElementsByTagName("span")[0],
+        oDec2 =aDec[1],
+        aTab = document.querySelectorAll("#wrap .tab span"),
+        length =aImg.length,
+        index = 0,
+        arrText =[
+            "第一张图片",
+            "第二张图片",
+            "第三张图片",
+            "第四张图片",
+            "第五张图片"
+        ],       //每个图片对应描述的文本
+        bool = true;
+    if(bool){
+
+    }
+    //左边点击事件
+    aBtn[0].onclick = function(){
+        aImg[index].className = "";
+        index --;
+        oDec1.innerHTML = index + 1;
+        if(index < 0){
+            index = bool?0:length-1;
+        }
+        aImg[index].className = "show";
+        //描述区域
+        oDec1.innerHTML = index + 1;
+        oDec2.innerHTML = arrText[index];
+    };
+
+    //右边点击事件
+    aBtn[1].onclick = function(){
+        aImg[index].className = "";
+        index ++;
+
+        if(index>length-1){
+            index = bool? length-1 : 0;
+            // if(bool){
+            //     index = length-1
+            // }
+            // else{
+            //     index = 0;
+            // }
+        }
+        aImg[index].className = "show";
+        //描述区域
+        oDec1.innerHTML = index + 1;
+        oDec2.innerHTML = arrText[index];
+    };
+    //tab按钮的点击
+    aTab[0].onclick = function(){
+        aTab[0].className = "active";
+        aTab[1].className = "";
+        bool = true;
+    };
+    aTab[1].onclick = function(){
+        aTab[0].className = "";
+        aTab[1].className = "active";
+        bool = false;
+    }
+</script>
+</body>
+</html>

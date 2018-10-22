@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>49期</title>
+    <meta name="keywords" content="关键字">
+    <meta name="description" content="网页广告描述">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            background:url("images/2.jpg") no-repeat top/100vw;
+            background-attachment: fixed;
+        }
+        a {
+            text-decoration: none;
+            color: #fff;
+        }
+
+        ul, ol, li {
+            list-style: none;
+        }
+        #wrap{
+            width:800px;
+            font-size:14px;
+            margin:50px auto 0;
+            background-color:rgba(255,255,255,.5);
+        }
+        #wrap p{
+            text-indent:2em;
+            line-height:35px;
+        }
+
+        #wrap img{
+            opacity:.8;
+        }
+        #btn{
+            position:absolute;
+            left:50px;
+            top:100px;
+            width:150px;
+            height:30px;
+            text-align:center;
+        }
+        #btn  span{
+            display:inline-block;
+            width:50px;
+            height:30px;
+            margin:0px 5px;
+            line-height:30px;
+            background-color: #f60;
+            cursor:pointer;
+            font-weight:bold;
+            font-size:15px;
+            user-select:none;
+            border:0px;
+        }
+    </style>
+</head>
+<body>
+<div id="btn">
+    <span>文字+</span><span>文字-</span>
+</div>
+<div id="wrap">
+
+    <p>2018年F1，梅赛德斯-AMG马石油车队剑指五连冠</p>
+    <img src="images/1.jpg" alt="">
+    <p>呼啸而过的2017赛季，见证了无数梅赛德斯-AMG马石油车队的高光时刻，
+        9次最快圈速，12个分站赛冠军，车队四连冠，车手四冠王，一系列荣耀加冕，让这项本应风起云涌的巅峰赛事少了一丝悬念。
+        展望2018，全新赛制，全新车型，虎视眈眈的竞争者，面对全新挑战，梅奔车队作出的回应永远都如此简单直接：分秒，必征.
+    </p>
+    <img src="images/2.jpg" alt="">
+    <p>
+        全新的赛季角逐，更新的赛制颇具看点。组委会规定每位车手整个赛季限用3套动力单元，降低的引擎数量无疑给各车队出了不小的难题。
+        一系列保守派车队决定牺牲马力输出来确保每颗引擎可以顺利撑过7场比赛。
+        但对于血性十足的梅奔而言，最强的引擎，最大的马力依旧无可妥协，确保车手可以时刻以最强模式驰骋赛场。
+        这是梅赛德斯-奔驰追求极致表现的最佳印证，同时也展现出车队对于雄厚技术支持的十足信心。
+    </p>
+    <img src="images/3.jpg" alt="">
+    <p>万众瞩目的2018，赛车传奇方吉奥的名字一定会被频繁提及。
+        如果梅赛德斯-AMG马石油车队的英国车手刘易斯-汉密尔顿卫冕成功，他的成就将匹敌上世纪50年代末获得五冠的赛车界传奇-阿根廷人方吉奥。
+        “我看到了比肩方吉奥的可能，这样的前景令人激动。”
+        汉密尔顿在赛季新车W09的银石发布仪式上说道.
+    </p>
+    <img src="images/4.jpg" alt="">
+    <p>
+        同样值得一提的是梅赛德斯-AMG马石油车队的全新战车W09，从车队在英国银石赛道的发布会开始，
+        这款王者座驾就已经备受瞩目，赛车设计在持续追求空气动力学和极致刚性的基础上融入了全新的头部保护系统--Halo，
+        让我们共同期待汉密尔顿驾驶这款新车完成2018赛季的卫冕。
+    </p>
+    <img src="images/5.jpg" alt="">
+    <p>
+        新赛季的角逐从开局伊始就已硝烟四起，澳大利亚大奖赛的揭幕战让全世界车迷见证了双雄争霸的态势，
+        接连其后的每一站大奖赛的角逐都是激烈异常。
+        传统强队的复苏，蓄势待发的竞争者，梅奔车队将如何捍卫自己的霸主地位？让我们拭目以待。
+    </p>
+    <img src="images/6.jpg" alt="">
+    <p>
+        当突破极限成为不变的追求，当争分夺秒融入团队的血液，每一次征战都将是自我的超越。
+        全新赛季，梅赛德斯-AMG马石油车队将一如既往，全力以赴，以王者风范，书写赛道传奇。2018，分秒，必征！
+    </p>
+    <img src="images/7.jpg" alt="">
+</div>
+
+<script>
+    let oWrap =document.getElementById("wrap"),
+        aSpan =document.getElementsByTagName("span"),
+        size = 14;
+
+    aSpan[0].onclick = function(){
+        size++;
+        if(size>30){
+            size=30;
+        }
+        oWrap.style.fontSize = size + "px";
+    };
+    aSpan[1].onclick = function(){
+        size--;
+        if(size<12){
+            size=12;
+        }
+        oWrap.style.fontSize = size +"px";
+    }
+</script>
+</body>
+</html>

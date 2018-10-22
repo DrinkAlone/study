@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>49期</title>
+    <meta name="keywords" content="关键字">
+    <meta name="description" content="网页广告描述">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        a {
+            text-decoration: none;
+            color: #fff;
+        }
+
+        ul, ol, li {
+            list-style: none;
+        }
+        #wrap{
+            width:1000px;
+            margin:50px auto;
+
+        }
+        #wrap span{
+            display:inline-block;
+            width:80px;
+            height:30px;
+            border:1px solid #f60;
+            margin:3px;
+            text-align:center;
+            line-height:30px;
+        }
+    </style>
+</head>
+<body>
+<div id="wrap">
+    <!--<span></span>-->
+</div>
+
+<script>
+    let oWrap = document.getElementById("wrap");
+
+
+    for(let i=1;i<=9;i++){
+        for(let j=1;j<=i;j++){
+            oWrap.innerHTML += `<span>${j}X${i}=${i*j}</span>`;
+            console.log(j);
+        }
+        oWrap.innerHTML += "<br>";
+
+    }
+
+</script>
+</body>
+</html>

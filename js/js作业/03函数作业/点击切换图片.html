@@ -35,19 +35,11 @@
     let oWrap = document.getElementById("wrap");
     let Img ="";
     let num= 0;
-
-
-       oWrap.onclick = function () {
+    oWrap.onclick = function () {
            num = num + 1
            Img = `url("images/${num%3}.jpg")`;
            oWrap.style.backgroundImage = Img;
        };
-
-
-
-
-
-
 </script>
 </body>
 </html>

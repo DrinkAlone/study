@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>追风少年</title>
+    <meta name="keywords" content="关键字">
+    <meta name="description" content="网页广告描述">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        ul, ol, li {
+            list-style: none;
+        }
+        #wrap{
+            width:600px;
+            height:350px;
+            margin:50px auto;
+            background-position:center;
+            background-size:cover;
+            background-image: url("images/0.jpg"),url("images/1.jpg"),url("images/2.jpg");
+        }
+    </style>
+</head>
+<body>
+<div id="wrap"></div>
+
+<script>
+    let oWrap = document.getElementById("wrap");
+    let Img ="";
+    let num= 0;
+    oWrap.onclick = function () {
+           num = num + 1
+           Img = `url("images/${num%3}.jpg")`;
+           oWrap.style.backgroundImage = Img;
+       };
+
+</script>
+</body>
+</html>

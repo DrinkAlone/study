@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div class='box' ys='hahah'></div>
+    <script>
+        let box = document.querySelector("div")
+        box.getAttribute("ys")
+        box.setAttribute("yss","")
+        box.removeAttribute("ys")
+        /*
+            不能通过访问属性的方式获取元素的自定义属性.
+
+            数据的学习: 
+                增: setAttribute
+                删: removeAttribute
+                改: setAttribute
+                查: getAttribute
+
+        */
+        console.log(box.ys);
+        // let box = document.querySelector("div");
+        // box.innerHTML = "hello";
+        
+        // function fo1(){
+        //     // console.log("hello world");
+        // }
+
+        // fo1();
+
+        // box.onclick = function(){
+        //     fo1();
+        // };
+
+        //box.onclick = fo1();
+        
+        
+        // box.onclick = function(){
+        //     console.log("hahaha")
+        // };
+
+        // function fo1(){
+        //     // console.log("hello world");
+        // } 
+        //函数声明
+
+
+        // let foo = function(){
+        //     console.log("hahaha")
+        // }
+        //函数表达式
+        /*
+            封装: 打包我们的代码
+
+            on事件后面赋值的内容一定是函数,而不是函数的执行结果.
+
+            函数: 
+                必须要有用名字的?
+                1. 声明函数
+                2. 使用它
+
+            函数执行时需要加括号的.也就是说,直接加括号表示函数执行了
+
+            任何代码都是执行完成之后会有返回值得,包括函数
+
+            任何代码都必须要有意义:
+
+            具名函数: 有函数名就是具名函数
+            匿名函数: 没有名字的函数,通常不能直接声明,会报错
+                1. 必须要有使用的途径
+                2. 立即执行
+                    ()()  (function(){}())  +function(){}()
+                3. 函数赋值给某一个变量,使用变量执行函数
+
+            y =x*x
+            输入
+            function eat(){
+                console.log("我想要吃苹果")
+            }
+
+            在()中可以写上参数,这个参数可以在函数内部使用
+
+
+            输出
+
+        */
+        // let y = 3;
+        // function calc(x = 0, y = 0,){
+        //     console.log(x+y);
+        // }
+
+        // calc(undefined,5);
+        // let log = console.log.bind(console);
+        /*
+            x: 形参,用来指示将要穿进去的参数.
+                形参可以直接赋值一个初始默认值.
+
+            9: 实参,实际穿进去的参数.
+                形参默认值: 如果检测是undefined,那么就会使用默认值
+
+
+:
+                
+            输出:  功能的体现 
+
+                函数是可以没有输出的,但是不代表此时函数不输出东西
+
+                函数的默认返回值是undefined
+
+                我们可以输出我们想要的返回值.
+
+
+        */
+        // 
+        // let $ = document.querySelector.bind(document);
+
+        function calc(x = 1,y = 1){
+            return (x+y)
+            alert(1)
+        }
+        calc(1,2);
+        /*
+            在函数里面用return来返回结果并结束函数
+
+            return 之后函数就执行完成了.
+
+            今后请省略分号.es5
+
+            返回值可以返回什么?
+
+                可以返回任何东西.
+
+        */
+
+       // y = 2*x*x + 3*x -5;
+        function calc2(x){
+            return 2*x*x+3*x-5
+        }
+        calc2(5)
+
+        function foo(){
+            let sum = 0
+            return function(y){
+                sum += y
+                return sum
+            }
+        }
+        var add = foo();
+
+        /*
+            n! = n*(n-1)*(n-2)...1
+        */
+
+        // function fo2(num){
+
+        //     if ( num == 1 ) return 1;
+
+        //     return fo2(num-1)*num
+
+        // }
+        /*
+            2  2
+            3  3*2 = 6
+
+            4 4*3*2
+
+            n
+
+        
+        */
+        /*
+            ES6的函数声明以及使用
+
+            function add(){
+
+            }
+
+        */
+        //let minus = (x = 0, y = 0) => x - y;
+        let pinfang = x => x*x
+
+        /*
+            任何JS的代码都可以转化成一行表达式
+            
+        */
+
+    </script>
+</body>
+</html>

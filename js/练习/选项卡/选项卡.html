@@ -1,0 +1,178 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>49期</title>
+    <meta name="keywords" content="关键字">
+    <meta name="description" content="网页广告描述">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        a {
+            text-decoration: none;
+            color: #fff;
+        }
+
+        ul, ol, li {
+            list-style: none;
+        }
+        #wrap{
+            width:820px;
+            height:380px;
+            margin:50px auto 0;
+            user-select: none;
+        }
+        #img{
+            position:relative;
+            width:100%;
+            height:340px;
+        }
+        #img ul{
+            width:100%;
+            height:100%;
+        }
+        #img li{
+            display:none;
+            position:absolute;
+            top:0;
+            left:0;
+            width:100%;
+            height:100%;
+        }
+        #img li.show{
+            display:block;
+        }
+        #tab{
+
+            overflow:hidden;
+            width:100%;
+            height:40px;
+        }
+        #tab ul{
+            width:200%;
+            height:100%;
+        }
+        #tab li{
+            box-sizing:border-box;
+            float:left;
+            width:10%;
+            height:100%;
+            font-size:12px;
+            line-height:40px;
+            text-align:center;
+            color:#424242;
+            background-color:#e3e2e2;
+            cursor:pointer;
+        }
+        #tab li.active{
+            color:#ab8e66;
+            background-color: #f7f6f6;
+            border-bottom:2px solid #cea861;
+        }
+        #btn div{
+            position:absolute;
+            top:50%;
+            width:40px;
+            height:40px;
+            margin-top:-20px;
+            line-height:40px;
+            text-align:center;
+            background-color: #cea861;
+            color:#f6f6f6;
+            font-size:20px;
+            font-weight:bold;
+            cursor:pointer;
+            opacity:.8;
+        }
+        #btn .left{
+            left:0;
+        }
+        #btn .right{
+            right:0;
+        }
+    </style>
+</head>
+<body>
+<div id="wrap">
+    <!--图片对应的部分-->
+    <div id="img">
+        <ul>
+            <li class="show"><a href=""><img src="images/1.jpg" alt=""></a></li>
+            <li><a href=""><img src="images/2.jpg" alt=""></a></li>
+            <li><a href=""><img src="images/3.jpg" alt=""></a></li>
+            <li><a href=""><img src="images/4.jpg" alt=""></a></li>
+            <li><a href=""><img src="images/5.jpg" alt=""></a></li>
+        </ul>
+        <div id="btn">
+            <div class="left"> < </div>
+            <div class="right"> > </div>
+        </div>
+    </div>
+    <!--选项卡对应部分-->
+    <div id="tab">
+        <ul>
+            <li class="active">海克斯科技玛尔扎哈</li>
+            <li>全球总决赛通行证</li>
+            <li>驯龙学者黑默丁格</li>
+            <li>参加竞猜赢限定图标</li>
+            <li>S8系列服饰</li>
+        </ul>
+        <!--左右按键部分-->
+
+    </div>
+</div>
+
+<script>
+    let aTab = document.querySelectorAll("#tab ul li"),
+        aBtn = document.querySelectorAll("#btn div"),
+        aImg = document.querySelectorAll("#img ul li");
+    let len = aTab.length;
+    let num = 0;
+    //选项卡点击事件
+    for(let i=0;i<len;i++){
+        aTab[i].onclick = function(){
+            if(num !== i){
+                aTab[num].className="";
+                aImg[num].className="";
+                num = i;
+                aTab[num].className="active";
+                aImg[num].className="show";
+            }
+        };
+    }
+    //左右点击事件
+
+    aBtn[1].onclick = function () {
+        aTab[num].className = "";
+        aImg[num].className = "";
+        num++;
+        if (num > len - 1) {
+            num = 0
+        }
+        aTab[num].className = "active";
+        aImg[num].className = "show";
+    };
+
+    aBtn[0].onclick = function () {
+        aTab[num].className = "";
+        aImg[num].className = "";
+        num--;
+        if (num < 0) {
+            num = len-1
+        }
+        aTab[num].className = "active";
+        aImg[num].className = "show";
+    }
+
+
+
+
+
+
+</script>
+</body>
+</html>

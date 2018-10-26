@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>49期</title>
+    <meta name="keywords" content="关键字">
+    <meta name="description" content="网页广告描述">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        a {
+            text-decoration: none;
+            color: #fff;
+        }
+
+        ul, ol, li {
+            list-style: none;
+        }
+        #wrap{
+            height:100px;
+        }
+    </style>
+</head>
+<body>
+<div id="wrap"></div>
+
+<script>
+//5文钱可以买一只公鸡，3文钱可以买一只母鸡，1文钱可以买3只雏鸡。
+// 现在用100文钱买100只鸡，那么各有公鸡、母鸡、雏鸡多少只？请编写程序实现。
+    //x*5+y*3+z/3=100  x公鸡  y母鸡  z雏鸡
+    let oWrap =document.getElementById("wrap");
+    for(let x=0;x<=20;x++){
+        for(let y=0;y<34;y++){
+            let z=100-x-y;
+            if(x*5+y*3+z/3 == 100){
+                oWrap.innerHTML +=`公鸡${x}母鸡${y}雏鸡${z}<br>`;
+            }
+        }
+    }
+
+
+</script>
+</body>
+</html>

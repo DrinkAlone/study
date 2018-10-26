@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>49期</title>
+    <meta name="keywords" content="关键字">
+    <meta name="description" content="网页广告描述">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        a {
+            text-decoration: none;
+            color: #fff;
+        }
+
+        ul, ol, li {
+            list-style: none;
+        }
+    </style>
+</head>
+<body>
+<div id="wrap">
+</div>
+
+<script>
+    //xyz=x*x*x+y*y*y+z*z*z     (""+x+y+z)*1
+    let oWrap = document.getElementById("wrap");
+    let a = 0;
+    let b = 0;
+    let num = "";
+     for(let x=1;x<=9;x++){
+         for(let y=0;y<=9;y++){
+             for(let z=0;z<=9;z++){
+                 a =x*x*x+y*y*y+z*z*z;
+                 b =(""+x+y+z)*1;
+                 if(a == b){num +=`${b}<br>`}
+             }
+         }
+    }
+    oWrap.innerHTML = num;
+</script>
+</body>
+</html>

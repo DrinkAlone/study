@@ -1,0 +1,78 @@
+<head>
+    <meta charset="UTF-8">
+    <title>49期</title>
+    <meta name="keywords" content="关键字">
+    <meta name="description" content="网页广告描述">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        ul, ol, li {
+            list-style: none;
+        }
+        #wrap{
+            width:200px;
+            height:50px;
+            margin:50px auto 0;
+            border:1px solid blue;
+        }
+        #wrap textarea{
+            resize:none;
+            line-height:48px;
+            font-size:20px;
+            text-align:center;
+            outline:none;
+
+
+        }
+        #num{
+            width:50px;
+            height:100%;
+            background-color: #f60;
+            color:#eee;
+        }
+        #box{
+            float:right;
+            width:145px;
+            height:50px;
+            font-size:15px;
+            text-align:center;
+            line-height:48px;
+
+        }
+
+    </style>
+</head>
+<body>
+<div id="wrap">
+    <textarea id="num" placeholder="输入"></textarea>
+    <div id="box"></div>
+    <button id="btn">计算</button>
+</div>
+
+
+<script>
+    let oBtn = document.getElementById("btn"),
+        oNum  = document.getElementById("num"),
+        oBox  = document.getElementById("box");
+    function num(n){
+        let x = 1;
+        for(let i=n;i>0;i--){
+            x = x*i
+        }
+        return x
+    }
+
+    oBtn.onclick = function(){
+        oBox.innerHTML =num(oNum.value);
+    }
+
+</script>
+</body>
+</html>

@@ -1,0 +1,136 @@
+<head>
+    <meta charset="UTF-8">
+    <title>49期</title>
+    <meta name="keywords" content="关键字">
+    <meta name="description" content="网页广告描述">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        ul, ol, li {
+            list-style: none;
+        }
+        #wrap{
+            width:504px;
+            height:504px;
+            margin:50px auto 0;
+            border:1px solid #333;
+        }
+        #wrap ul{
+            width:100%;
+            height:70px;
+        }
+        #wrap li{
+            float:left;
+            width:70px;
+            height:100%;
+            border:1px solid #abcdef;
+        }
+        #wrap li.blue{
+            background-color:skyblue;
+        }
+    </style>
+</head>
+<body>
+<div id="wrap">
+    <ul>
+        <li class="blue"></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</div>
+
+
+<script>
+    let aLi = document.querySelectorAll("#wrap li");
+    function color(n){
+        if(aLi[n] == undefined ) return
+        if(aLi[n].className == "blue"){
+            aLi[n].className ="";
+        }else{
+            aLi[n].className ="blue";
+        }
+    }
+
+    for(let i=0;i<aLi.length;i++){
+        aLi[i].onclick = function(){
+            color(i+7)
+            color(i-7)
+            if(i%7==0)color(i+1)
+            if(i%7>0)color(i-1)
+            color(i)
+
+
+        }
+    }
+</script>
+<script>
+
+
+</script>
+</body>
+</html>

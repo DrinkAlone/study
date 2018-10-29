@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>49期</title>
+    <meta name="keywords" content="关键字">
+    <meta name="description" content="网页广告描述">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        a {
+            text-decoration: none;
+            color: #fff;
+        }
+
+        ul, ol, li {
+            list-style: none;
+        }
+        #wrap{
+            width: 300px;
+            margin: 50px auto 0;
+
+        }
+        #wrap .list{
+            width:100%
+        }
+        #wrap .list li{
+            width:100%;
+            border-bottom:1px solid #ddd;
+        }
+        #wrap .list li p{
+            width:100%;
+            height:30px;
+            line-height:30px;
+            text-indent:2em;
+            background-color: #abcdef;
+            cursor:pointer;
+        }
+        #wrap .list li ul{
+            display:none;
+        }
+        #wrap .list .show{
+            display:block;
+        }
+        #wrap .list .show li{
+            width:100%;
+            height:40px;
+            line-height:40px;
+        }
+        #wrap .list .show li .con{
+            float:left;
+            width:200px;
+            height:100%;
+            background-color: #f60;
+            text-indent:3em;
+        }
+        #wrap .list .show li button{
+            float:right;
+            width:50px;
+            height:30px;
+            margin:5px 20px 5px 0;
+        }
+    </style>
+</head>
+<body>
+<div id="wrap">
+    <ul class="list">
+        <li>
+            <p>第一个</p>
+            <ul>
+                <li>
+                    <div class="con">1</div>
+                    <button>修改</button>
+                </li>
+                <li>
+                    <div class="con">2</div>
+                    <button>修改</button>
+                </li>
+                <li>
+                    <div class="con">3</div>
+                    <button>修改</button>
+                </li>
+                <li>
+                    <div class="con">4</div>
+                    <button>修改</button>
+                </li>
+                <li>
+                    <div class="con">5</div>
+                    <button>修改</button>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <p>第二个</p>
+            <ul>
+                <li>
+                    <div class="con">1</div>
+                    <button>修改</button>
+                </li>
+                <li>
+                    <div class="con">2</div>
+                    <button>修改</button>
+                </li>
+                <li>
+                    <div class="con">3</div>
+                    <button>修改</button>
+                </li>
+                <li>
+                    <div class="con">4</div>
+                    <button>修改</button>
+                </li>
+                <li>
+                    <div class="con">5</div>
+                    <button>修改</button>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <p>第三个</p>
+            <ul>
+                <li>
+                    <div class="con">1</div>
+                    <button>修改</button>
+                </li>
+                <li>
+                    <div class="con">2</div>
+                    <button>修改</button>
+                </li>
+                <li>
+                    <div class="con">3</div>
+                    <button>修改</button>
+                </li>
+                <li>
+                    <div class="con">4</div>
+                    <button>修改</button>
+                </li>
+                <li>
+                    <div class="con">5</div>
+                    <button>修改</button>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <p>第四个</p>
+            <ul>
+                <li>
+                    <div class="con" >1</div>
+                    <button>修改</button>
+                </li>
+                <li>
+                    <div class="con">2</div>
+                    <button>修改</button>
+                </li>
+                <li>
+                    <div class="con">3</div>
+                    <button>修改</button>
+                </li>
+                <li>
+                    <div class="con">4</div>
+                    <button>修改</button>
+                </li>
+                <li>
+                    <div class="con">5</div>
+                    <button>修改</button>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <p>第五个</p>
+            <ul>
+                <li>
+                    <div class="con">1</div>
+                    <button>修改</button>
+                </li>
+                <li>
+                    <div class="con">2</div>
+                    <button>修改</button>
+                </li>
+                <li>
+                    <div class="con">3</div>
+                    <button>修改</button>
+                </li>
+                <li>
+                    <div class="con">4</div>
+                    <button>修改</button>
+                </li>
+                <li>
+                    <div class="con">5</div>
+                    <button>修改</button>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</div>
+
+<script>
+    let aList = document.querySelectorAll("#wrap .list>li p"),
+        aShow = document.querySelectorAll("#wrap .list li ul"),
+        aCon  = document.querySelectorAll("#wrap .list li ul .con"),
+        aBtn  = document.querySelectorAll("#wrap .list li ul button");
+
+
+    for(let i=0;i<aList.length;i++){
+        aList[i].onclick =function(){
+            show(i)
+        }
+    }
+    for(let j=0;j<aBtn.length;j++){
+        aBtn[j].onclick=function(){
+            btn(j)
+        }
+    }
+    function show(n){
+        if(aShow[n].className ==""){
+            aShow[n].className ="show"
+        }else{
+            aShow[n].className =""
+        }
+    }
+    function btn(m){
+        if(aCon[m].contentEditable !== "true"){
+            aCon[m].contentEditable = true;
+            aBtn[m].innerHTML ="确定"
+        }else{
+            aCon[m].contentEditable = false;
+            aBtn[m].innerHTML ="修改"
+        }
+
+    }
+</script>
+</body>
+</html>

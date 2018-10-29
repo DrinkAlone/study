@@ -108,7 +108,7 @@
 <script>
     let aLi = document.querySelectorAll("#wrap li");
     function color(n){
-        if(aLi[n] == undefined ) return
+        if(aLi[n] == undefined ) return;
         if(aLi[n].className == "blue"){
             aLi[n].className ="";
         }else{
@@ -118,14 +118,15 @@
 
     for(let i=0;i<aLi.length;i++){
         aLi[i].onclick = function(){
-            color(i+7)
-            color(i-7)
-            if(i%7==0)color(i+1)
-            if(i%7>0)color(i-1)
+            color(i+7);
+            color(i-7);
+            if(i%7<6)color(i+1);
+            if(i%7>0)color(i-1);
             color(i)
 
 
-        }
+        };
+        aLi[i].innerHTML = `${i}`
     }
 </script>
 <script>

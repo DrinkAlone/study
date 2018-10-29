@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>49期</title>
+    <meta name="keywords" content="关键字">
+    <meta name="description" content="网页广告描述">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        a {
+            text-decoration: none;
+            color: #fff;
+        }
+
+        ul, ol, li {
+            list-style: none;
+        }
+        #wrap{
+            width:400px;
+            height:100px;
+            margin:50px auto 0px;
+        }
+        #wrap div{
+            float:left;
+            height:50px;
+            line-height:50px;
+            color:red;
+        }
+        #wrap ul{
+            float:left;
+            width:150px;
+            height:50px;
+            margin-left:10px;
+        }
+        #wrap li{
+            float:left;
+            width:20px;
+            height:20px;
+            margin:15px 0;
+            background:url("star.png") no-repeat;
+        }
+        #wrap li.on{
+            background-position: 0 -27px;
+        }
+        #wrap p{
+            float:left;
+            width:100px;
+            height:50px;
+            border:1px solid #ddd;
+            font-size:12px;
+        }
+    </style>
+</head>
+<body>
+<div id="wrap">
+    <div>星级评分:</div>
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    <p>提示：请认真给当前文章打分</p>
+
+</div>
+
+<script>
+    let ali =document.querySelectorAll("#wrap li"),
+        oul =document.querySelector("#wrap ul"),
+        op  =document.querySelectorAll("#wrap p")[0],
+        num = -1,
+        len =ali.length,
+        atext=["提示：请认真给当前文章打分","很差","差","一般","好","非常好"];
+    oul.onmouseleave = function(){
+        on(num);
+    for(let i=0;i<len;i++){
+        ali[i].onmouseenter = function(){
+            on(i)
+        };
+
+        ali[i].onclick = function(){
+            num = i;
+            on(num)
+        }
+
+    }
+
+    };
+    function on(n){
+        op.innerHTML = atext[n+1];
+        for(let j=0;j<len;j++){
+            ali[j].className =""
+        }
+        for(let j=0;j<=n;j++){
+            ali[j].className ="on"
+        }
+
+    }
+
+
+
+</script>
+</body>
+</html>

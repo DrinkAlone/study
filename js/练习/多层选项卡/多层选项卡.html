@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>49期</title>
+    <meta name="keywords" content="关键字">
+    <meta name="description" content="网页广告描述">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        a {
+            text-decoration: none;
+            color: #fff;
+        }
+
+        ul, ol, li {
+            list-style: none;
+        }
+        #wrap{
+            width:600px;
+            margin:50px auto 0;
+            use-select:none;
+        }
+        #wrap .left{
+            float:left;
+            margin-right:10px;
+        }
+        #wrap .left li{
+            width:100px;
+            height:30px;
+            margin-bottom:5px;
+            line-height:30px;
+            text-align:center;
+            font-size:15px;
+            color:#ddd;
+            background-color: #333;
+            cursor:pointer;
+        }
+        #wrap .left li.show{
+            background-color: #f60;
+        }
+        #wrap .right{
+            position:relative;
+            float:left;
+            width:326px;
+            height:200px;
+        }
+        #wrap .right .list{
+            display:none;
+        }
+        #wrap .right .list.show{
+            display:block;
+        }
+        #wrap .right .list .img li{
+            display:none;
+            position:absolute;
+            left:0;
+            top:0;
+        }
+        #wrap .right .img li.show{
+            display:block;
+        }
+        #wrap .right .list .btn ul{
+            position:absolute;
+            left:0;
+            bottom:0;
+            margin:5px;
+        }
+        #wrap .right .list .btn li{
+            float:left;
+            width:20px;
+            height:20px;
+            margin:0 5px;
+            line-height:20px;
+            text-align:center;
+            font-size:12px;
+            color:#ddd;
+            background-color: #333;
+            cursor:pointer;
+        }
+        #wrap .right .list .btn li.show{
+            background-color: #f60;
+        }
+    </style>
+</head>
+<body>
+<div id="wrap">
+    <ul class="left">
+        <li class="show">豪车</li>
+        <li>美味</li>
+        <li>美女风景</li>
+        <li>豪车</li>
+    </ul>
+    <ul class="right">
+        <li class="list show">
+            <ul class="img">
+                <li class="show"><img src="images/demo1/1.jpg" alt=""></li>
+                <li><img src="images/demo1/2.jpg" alt=""></li>
+                <li><img src="images/demo1/3.jpg" alt=""></li>
+                <li><img src="images/demo1/4.jpg" alt=""></li>
+            </ul>
+            <div class="btn">
+                <ul>
+                    <li class="show">1</li>
+                    <li >2</li>
+                    <li>3</li>
+                    <li>4</li>
+                </ul>
+            </div>
+        </li>
+        <li class="list">
+            <ul class="img ">
+                <li class="show"><img src="images/demo2/m1.jpg" alt=""></li>
+                <li><img src="images/demo2/m2.jpg" alt=""></li>
+                <li><img src="images/demo2/m3.jpg" alt=""></li>
+                <li><img src="images/demo2/m4.jpg" alt=""></li>
+                <li><img src="images/demo2/m5.jpg" alt=""></li>
+            </ul>
+            <div class="btn">
+                <ul>
+                    <li class="show">1</li>
+                    <li>2</li>
+                    <li>3</li>
+                    <li>4</li>
+                    <li>5</li>
+                </ul>
+            </div>
+        </li>
+        <li class="list">
+            <ul class="img">
+                <li class="show"><img src="images/demo3/s1.jpg" alt=""></li>
+                <li><img src="images/demo3/s2.jpg" alt=""></li>
+                <li><img src="images/demo3/s3.jpg" alt=""></li>
+                <li><img src="images/demo3/s4.jpg" alt=""></li>
+                <li><img src="images/demo3/s5.jpg" alt=""></li>
+            </ul>
+            <div class="btn">
+                <ul>
+                    <li class="show">1</li>
+                    <li>2</li>
+                    <li>3</li>
+                    <li>4</li>
+                    <li>5</li>
+                </ul>
+            </div>
+        </li>
+        <li class="list">
+            <ul class="img">
+                <li class="show"><img src="images/demo1/1.jpg" alt=""></li>
+                <li><img src="images/demo1/2.jpg" alt=""></li>
+                <li><img src="images/demo1/3.jpg" alt=""></li>
+                <li><img src="images/demo1/4.jpg" alt=""></li>
+                <li><img src="images/demo1/5.jpg" alt=""></li>
+            </ul>
+            <div class="btn">
+                <ul>
+                    <li class="show">1</li>
+                    <li>2</li>
+                    <li>3</li>
+                    <li>4</li>
+                    <li>5</li>
+                </ul>
+            </div>
+        </li>
+    </ul>
+</div>
+
+<script>
+    let allbtn =document.querySelectorAll("#wrap .right .list .btn"),
+        allimg =document.querySelectorAll("#wrap .right .list .img"),
+        length =allimg.length,
+        btn = [],
+        img = [];
+        //btn = allbtn[0].querySelectorAll("li")
+        //console.log(allbtn);主要主要获取到对应的标签
+    //图片区域
+    for(let i=0;i<length;i++) {
+        btn[i] = allbtn[i].querySelectorAll("li");//获取到对应的按钮
+        img[i] = allimg[i].querySelectorAll("li");//获取到对应的图片
+        let imgnum = 0;//初始显示的图片
+        //console.log(img);
+        //console.log(btn[0]);
+        for (let j = 0; j < img[i].length; j++) {
+            btn[i][j].onmouseenter = function () {
+                btn[i][imgnum].className = "";
+                img[i][imgnum].className = "";
+                imgnum = j;
+                btn[i][imgnum].className = "show";
+                img[i][imgnum].className = "show"
+            }
+        }
+
+    }
+    //左侧选项卡
+    let atab = document.querySelectorAll("#wrap .left li"),//获取到对应的选项卡
+        alist = document.querySelectorAll("#wrap .right .list"),//获取到对应的图片组
+        len = atab.length,
+        tabnum = 0;
+    console.log(atab);
+    console.log(alist);
+    for(let i=0;i<len;i++){
+        atab[i].onclick = function(){
+            atab[tabnum].className ="list";
+            alist[tabnum].className ="list";
+            tabnum = i;
+            atab[tabnum].className ="list show";
+            alist[tabnum].className ="list show"
+            }
+
+
+
+
+
+    }
+</script>
+</body>
+</html>

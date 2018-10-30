@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>49期</title>
+    <meta name="keywords" content="关键字">
+    <meta name="description" content="网页广告描述">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        a {
+            text-decoration: none;
+            color: #fff;
+        }
+
+        ul, ol, li {
+            list-style: none;
+        }
+        #wrap{
+            width:1000px;
+            margin:50px auto 0;
+            user-select: none;
+        }
+        #wrap table{
+            width:100%;
+            border-collapse:collapse;
+
+        }
+        table th{
+            height:50px;
+            color:#ddd;
+            font-weight:lighter;
+            font-size:15px;
+            background-color:#c36;
+            border:1px solid #999;
+        }
+        tbody td{
+            width:25%;
+            height:100px;
+            text-align:center;
+            border:1px solid #999;
+        }
+        tbody td img{
+            height:100px;
+        }
+        tbody .number span{
+            display:inline-block;
+            width:30px;
+            height:30px;
+            vertical-align:middle;
+            font-size:20px;
+            font-weight:bold;
+            background-color: #ddd;
+            cursor:pointer;
+        }
+        tbody .number .num{
+            width:50px;
+            height:30px;
+            line-height:30px;
+            color:#f60;
+            font-size:16px;
+            font-weight:normal;
+            background-color: #fff;
+            border:1px solid #999;
+            cursor:auto;
+        }
+        #wrap .box {
+            width:100%;
+            height:50px;
+            background-color: #c36;
+        }
+        #wrap .box div{
+            float:right;
+            width:25%;
+            height:100%;
+            text-align:center;
+            line-height:50px;
+            font-size:15px;
+            color:#ddd;
+
+        }
+        #wrap .box span{
+            padding:0 20px;
+            font-size:16px;
+            font-weight:bold;
+            color:#f60;
+        }
+    </style>
+</head>
+<body>
+<div id="wrap">
+    <table>
+        <thead>
+        <th>商品</th>
+        <th>单价</th>
+        <th>数量</th>
+        <th>小计</th>
+        </thead>
+        <tbody>
+            <tr>
+            <td><img src="images/shop1.jpg" alt=""></td>
+            <td class="dan">8</td>
+            <td class="number">
+                <span class="down"> - </span>
+                <span class="num"> 0</span>
+                <span class="add"> + </span>
+            </td>
+            <td class="price">0</td>
+        </tr>
+            <tr>
+                <td><img src="images/shop2.jpg" alt=""></td>
+                <td class="dan">10</td>
+                <td class="number">
+                    <span class="down"> - </span>
+                    <span class="num"> 0</span>
+                    <span class="add"> + </span>
+                </td>
+                <td class="price">0</td>
+            </tr>
+            <tr>
+                <td><img src="images/shop1.jpg" alt=""></td>
+                <td class="dan">12.5</td>
+                <td class="number">
+                    <span class="down"> - </span>
+                    <span class="num"> 0</span>
+                    <span class="add"> + </span>
+                </td>
+                <td class="price">0</td>
+            </tr>
+            <tr>
+                <td><img src="images/shop1.jpg" alt=""></td>
+                <td class="dan">23</td>
+                <td class="number">
+                    <span class="down"> - </span>
+                    <span class="num"> 0</span>
+                    <span class="add"> + </span>
+                </td>
+                <td class="price">0</td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="box">
+        <div class="totaprice">
+            合计费用:<span>0</span>￥
+        </div>
+        <div class="totanum">
+            已选中商品:<span>0</span>个
+        </div>
+
+    </div>
+</div>
+
+<script>
+    let adown = document.querySelectorAll("#wrap .number .down"),
+        anum  = document.querySelectorAll("#wrap .number .num"),
+        add   = document.querySelectorAll("#wrap .number .add"),
+        adan  = document.querySelectorAll("#wrap .dan"),
+        aprice= document.querySelectorAll("#wrap .price"),
+        ototanum=document.querySelector("#wrap .box .totanum span"),
+        ototaprice=document.querySelector("#wrap .box .totaprice span");
+    let length = anum.length;
+    //笨办法
+    // let num = [0,0,0,0];
+    // for(let i=0;i<length;i++){
+    //     adown[i].onclick = function(){
+    //         num[i]<1?0:num[i]--
+    //         money(i)
+    //     }
+    //     add[i].onclick = function(){
+    //         num[i]++
+    //         money(i)
+    //     }
+    // }
+    // function money(n){
+    //     anum[n].innerHTML = num[n]
+    //     aprice[n].innerHTML = adan[n].innerHTML*num[n]
+    //     ototanum.innerHTML = num[0]+num[1]+num[2]+num[3]
+    //     ototaprice.innerHTML=aprice[0].innerHTML*1+aprice[1].innerHTML*1+aprice[2].innerHTML*1+aprice[3].innerHTML*1
+    // }
+    let total = 0;
+    let sum= 0;
+    for(let i=0;i<length;i++){
+        let num = total;//给每个数量初始值
+        adown[i].onclick = function(){
+            num>0?num--:num;//数量减
+            anum[i].innerHTML > 0 ? total--: num;//总量减
+            geshu(i,num)
+        };
+        add[i].onclick = function(){
+            num++;//数量加
+            total++;//总量加
+            geshu(i,num)
+        }
+    }
+    function geshu(n,m){
+        anum[n].innerHTML = m;   //每个数量
+        ototanum.innerHTML = total;  //合计数量
+        aprice[n].innerHTML = m*adan[n].innerHTML;//小计
+        sum = aprice[0].innerHTML*1+aprice[1].innerHTML*1+aprice[2].innerHTML*1+aprice[3].innerHTML*1;
+
+        ototaprice.innerHTML =  sum
+    }
+
+</script>
+</body>
+</html>

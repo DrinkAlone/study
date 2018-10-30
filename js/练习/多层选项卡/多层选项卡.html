@@ -180,7 +180,7 @@
     for(let i=0;i<length;i++) {
         btn[i] = allbtn[i].querySelectorAll("li");//获取到对应的按钮
         img[i] = allimg[i].querySelectorAll("li");//获取到对应的图片
-        let imgnum = 0;//初始显示的图片
+        let imgnum = 0;//初始显示的图片,按钮
         //console.log(img);
         //console.log(btn[0]);
         for (let j = 0; j < img[i].length; j++) {
@@ -198,7 +198,7 @@
     let atab = document.querySelectorAll("#wrap .left li"),//获取到对应的选项卡
         alist = document.querySelectorAll("#wrap .right .list"),//获取到对应的图片组
         len = atab.length,
-        tabnum = 0;
+        tabnum = 0;//初始标签序号
     console.log(atab);
     console.log(alist);
     for(let i=0;i<len;i++){

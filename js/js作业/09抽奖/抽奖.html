@@ -39,8 +39,8 @@
 
 <script>
     let win = document.getElementById("wrap"),
-        con = document.querySelector(".con")
-    let arr = ["特等奖","一等奖","二等奖","三等奖","谢谢参与"]
+        con = document.querySelector(".con");
+    let arr = ["特等奖","一等奖","二等奖","三等奖","谢谢参与"];
     function rdm(min=0,max=100){
         return Math.floor(Math.random()*(max+1-min)+min)
     }
@@ -50,26 +50,26 @@
             con.innerHTML = arr[4]
         }
         if(num>80&&num<=90){
-            con.innerHTML = arr[3]
+            con.innerHTML = arr[3];
             alert(arr[3])
         }
         if(num>90&&num<=95){
-            con.innerHTML = arr[2]
+            con.innerHTML = arr[2];
             alert(arr[2])
         }
         if(num>95&&num<=98){
-            con.innerHTML = arr[1]
+            con.innerHTML = arr[1];
             alert(arr[1])
         }
         if(num>98&&num<=100){
-            con.innerHTML = arr[0]
+            con.innerHTML = arr[0];
             alert(arr[0])
         }
     }
         win.onclick = function(){
-            let num = 0
-            num = rdm()
-            print(num)
+            let num = 0;
+            num = rdm();
+            print(num);
             console.log(num);
 
         }

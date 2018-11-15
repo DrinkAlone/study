@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+      list-style-type: none;
+    }
+    .box{
+      position: relative;
+      margin: 200px auto;
+      width: 500px;
+      height: 300px;
+      border: 1px black solid;
+      overflow: hidden;
+    }
+    .box .list-title{
+      display: flex;
+      height: 40px;
+      background-color: #ccc;
+    }
+    .box .list-title li{
+      padding:0 20px;
+      width: 80px;
+      height: 40px;
+      line-height: 40px;
+      text-align: center;
+      cursor: pointer;
+    }
+    .box .list-title li.active{
+      background-color: blueviolet;
+    }
+    .box .info{
+      position: absolute;
+      left: 0;
+      width: 1500px;
+      height: 260px;
+      transition: .3s;
+    }
+    .box .info li{
+      float: left;
+      box-sizing: border-box;
+      padding: 20px;
+      width: 500px;
+      height: 260px;
+
+    }
+  </style>
+  <title>文本选项卡</title>
+</head>
+<body>
+  <div class="box">
+    <ul class="list-title">
+      <li class="active">html</li>
+      <li>css</li>
+      <li>javascript</li>
+    </ul>
+    <ul class="info">
+      <li style="background-color: red">超文本标记语言</li>
+      <li style="background-color: yellow">层叠样式表</li>
+      <li style="background-color: pink">基于原型的动态解释型的弱类型的脚本语言</li>
+    </ul>
+  </div>
+  <script>
+    // var abtns = document.querySelectorAll(".box .list-title li")
+    // var info = document.querySelector(".box .info")
+    // for(var i =0,l=abtns.length;i<l;i++){
+    //   abtns[i].onclick = (function(j){
+    //     return function(){
+    //       for(var k of abtns)k.className = ''
+    //       abtns[j].className = 'active'
+    //       info.style.left = `-${j*500}px`
+    //       tar = j
+    //     }
+    //   })(i)
+    // }
+  </script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<head>
+    <meta charset="UTF-8">
+    <title>49期</title>
+    <meta name="keywords" content="关键字">
+    <meta name="description" content="网页广告描述">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        ul, ol, li {
+            list-style: none;
+        }
+        #wrap{
+            position:relative;
+            width: 300px;
+            height:300px;
+            margin:50px auto;
+            border:1px solid red;
+        }
+        #wrap .circle{
+            position:absolute;
+            bottom:5px;
+            left:5px;
+            width:5px;
+            height:5px;
+            border-radius:50%;
+            background-color: #f60;
+        }
+        .btn{
+            width:50px;
+            margin:0 auto;
+            padding:10px 20px;
+            background-color: #f60;
+            text-align:center;
+            cursor:pointer;
+            user-select:none;
+        }
+    </style>
+</head>
+<body>
+<div id="wrap">
+    <i></i>
+</div>
+<div class="btn">发射</div>
+
+
+<script>
+    let oi = document.querySelector("#wrap i"),
+        obtn = document.querySelector(".btn")
+    ;
+    function rdmX(n=0,m=300){
+        return  Math.floor(Math.random()*(m-n)+n)
+    }
+    function rdmY(n=0,m=300){
+        return  Math.floor(Math.random()*(m-n)+n)
+    }
+    obtn.onclick = function(){
+        oi.className = "circle"
+        oi.style.bottom = `${rdmY()}px`
+        oi.style.left = `${rdmX()}px`
+        if(Math.sin(rdmX(),rdmY())>0.5){
+            console.log(1)
+        }
+    }
+
+</script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>document</title>
+    <meta name="keywords" content="关键字">
+    <meta name="description" content="网页广告描述">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        a {
+            text-decoration: none;
+            color: #fff;
+        }
+
+        ul, ol, li {
+            list-style: none;
+        }
+    </style>
+</head>
+<body>
+<div id="wrap"></div>
+
+<script>
+    function $pop(arr){
+        arr.bind($pop.return);
+        return arr.splice(arr.length-1,1)
+    }
+    function $push(arr,...str){
+        arr.splice(arr.length,0,...str);
+        return arr.length
+    }
+    function $shift(arr){
+        return arr.splice(0,1)
+    }
+    function $unshift(arr,...str){
+        arr.splice(0,0,...str);
+        return arr.length
+    }
+    function $reverse(str){
+        return str.split("").reverse().join("")
+    }
+
+</script>
+</body>
+</html>

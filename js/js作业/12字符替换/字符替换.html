@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>document</title>
+    <meta name="keywords" content="关键字">
+    <meta name="description" content="网页广告描述">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        a {
+            text-decoration: none;
+            color: #fff;
+        }
+
+        ul, ol, li {
+            list-style: none;
+        }
+        #wrap{
+            width:500px;
+            height:300px;
+            margin:50px auto 0;
+            border:1px solid #ddd;
+            font-size:12px;
+            line-height:27px;
+        }
+        #wrap .show{
+            background-color: red;
+        }
+        #box{
+            width:500px;
+            height:30px;
+            margin:20px auto;
+        }
+        #box input{
+            float:left;
+            width:100px;
+            height:30px;
+            line-height:30px;
+
+        }
+        #box .btn{
+            float:left;
+            padding:7px 30px;
+            margin:0px 10px;
+            background-color: #f60;
+            cursor:pointer;
+        }
+        #box .btn1{
+            float:left;
+            padding:7px 30px;
+            margin:0px 10px;
+            background-color: #f60;
+            cursor:pointer;
+        }
+    </style>
+</head>
+<body>
+<div id="wrap">在排位赛中，梅奔车手汉密尔顿以1分07秒281获得个人赛季第十、生涯第82杆，同时这也是梅奔车队在F1中获得的第100杆。维特尔落后0.093秒排在第二。两位芬兰车手博塔斯（+0.160秒）和莱科宁（+0.175秒）包揽发车第二排。 　　虽然红牛车手维斯塔潘和里卡多分别获得第五和第六名，但后者因更换涡轮增压器而在正赛中被罚退后五位发车，因此，和荷兰人同排的变成了索伯车手埃里克森。另一位被罚退的车手是奥康，他是因为更换变速箱而同样被罚退五位。 　　英特拉格斯赛道距离圣保罗市中心大约25公里，从1991年开始成为巴西大奖赛的举办地。它采用逆时针设计，且兼具崎岖不平的特点，而圣保罗的天气对车手也是不小的挑战。去年在这里，同样是提前夺冠的汉密尔顿在排位赛中撞墙，而法拉利则双双登上领奖台。昨天的排位赛也多少受到了雨水的影响，因此，这场比赛的结果在赛前也是很难预料。赛前，梅奔在车队积分榜上领先法拉利55分，本站比赛，只要他们不比跃马少拿12分以上，他们就将提前一轮卫冕车队总冠军。</div>
+<div id="box">
+    <input type="text">
+    <div class="btn">搜索</div>
+    <input type="text" class="replace">
+    <div class="btn1">修改</div>
+</div>
+<script>
+    let owrap = document.getElementById("wrap"),
+        oinput1 =document.querySelector("#box input"),
+        osearch = document.querySelector("#box .btn"),
+        oinput2 =document.querySelector("#box .replace"),
+        obtn1 = document.querySelector("#box .btn1");
+    let temp = "",
+        show = "",
+        reshow = "";
+
+    function search(){
+        //1获取到input1的value
+        temp  = oinput1.value;
+        //2input1的value在wrap的内容里面查询
+        let sub = 0;
+        sub = owrap.innerHTML.indexOf(temp);//获取到下标
+        //3给对应的内容加上span
+        if(sub <0){
+            alert("没有找到输入的文字")//没有对应的文字就弹窗提醒
+        }else{
+           show  = owrap.innerHTML.slice(sub,sub+temp.length)//获取到对应的文字
+        }
+        reshow = `<sapn class="show">${show}</sapn>`;//对应文字加上样式
+        owrap.innerHTML =owrap.innerHTML.replace(show,reshow);
+        oinput1.value = ""//清空搜索框
+
+
+    }
+    //搜索点击
+    osearch.onclick = function(){
+        if(oinput1.value === ""){
+            alert("没有输入文字")
+        }else{
+            search()
+        }
+    };
+    obtn1.onclick =function(){
+        //4在input2里面输入替换显示的文字
+        if(oinput2.value&&reshow === "") return alert("没有选中的文字");
+        owrap.innerHTML = owrap.innerHTML.replace(reshow,oinput2.value);
+        oinput2.value = "";
+        reshow = ""
+    }
+
+
+
+
+</script>
+</body>
+</html>

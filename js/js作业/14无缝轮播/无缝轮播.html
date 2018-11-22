@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>document</title>
+    <meta name="keywords" content="关键字">
+    <meta name="description" content="网页广告描述">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        a {
+            text-decoration: none;
+            color: #fff;
+        }
+
+        ul, ol, li {
+            list-style: none;
+        }
+        #wrap {
+            overflow:hidden;
+            width:820px;
+            height:340px;
+            margin:20px auto;
+            border:1px solid #666;
+
+        }
+        #wrap .banner{
+            position:relative;
+            left:0;
+            width:200%;
+            height:100%;
+        }
+        #wrap .banner li{
+            float:left;
+        }
+    </style>
+</head>
+<body>
+<div id="wrap">
+    <ul class="banner">
+        <li><img src="images/1.jpg" alt=""></li>
+        <li><img src="images/2.jpg" alt=""></li>
+    </ul>
+</div>
+
+<script>
+    let banner =document.querySelector("#wrap .banner"),
+        list = document.querySelectorAll("#wrap .banner img");
+    let index = 1,
+        index1 = 2;
+
+
+    function chage(dir){
+        if(dir === "left"){
+            index++;
+            index1++;
+            if(index>5){
+                index = 1
+            }
+            if(index1 > 5){
+                index1 = 1
+            }
+        }else{
+            index--;
+            index1--;
+            if(index <1){
+                index = 5
+            }
+            if(index1 <1){
+                index1 = 5
+            }
+        }
+
+    }
+    function move(dir){
+        if(dir === "left"){
+            banner.style.left = "-820px";
+            banner.style.transition= "1s";
+            chage(dir);
+            // console.log(index);
+            // console.log(index1);
+            setTimeout(function(){
+                banner.style.left = "0px";
+                banner.style.transition= "0s";
+                list[0].src =`images/${index}.jpg`;
+                list[1].src =`images/${index1}.jpg`
+            },1000)
+        }else{
+
+             chage(dir);
+             // console.log(index);
+             // console.log(index1);
+             list[0].src =`images/${index}.jpg`;
+             list[1].src =`images/${index1}.jpg`
+        }
+    }
+    setInterval(move,3000,"left")
+
+</script>
+</body>
+</html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .area{
+      margin: 0 auto;
+      width: 720px;
+      height: 720px;
+      border: 1px black solid;
+    }
+    .area>div{
+      float: left;
+      box-sizing: border-box;/* 怪异盒模型*/
+      width: 80px;
+      height: 80px;
+      border: 1px black solid;
+      line-height: 80px;
+      text-align: center;
+      font-size: 40px;
+    }
+  </style>
+</head>
+<body>
+  <div class="area">
+  </div>
+  <script>
+    let l = 9;//当前地图的宽度
+    let leng = l*l,
+        boomLen = 15;//炸弹的个数
+    let area = document.querySelector(".area");
+    renderMap();
+    let aDiv = document.querySelectorAll(".area>div");
+    // console.log(aDiv)
+    function renderMap(){
+      let temp = "";
+      for(let i =0;i<81;i++){
+        temp+=`<div></div>`//
+      }
+      area.innerHTML = temp 
+    }
+    
+    
+    let boomMap = {};
+    //页面的所有炸弹
+    /*
+      arr = []
+    */
+
+    function rnd(min = 0,max = 81){
+      min = Math.ceil(min);      //左右边界进行修饰
+      max = Math.floor(max);
+      return Math.floor(Math.random()*(max+ 1 - min)+min)
+    }
+    /* 
+      rnd适用范围??min和max必须是整数
+    */
+
+
+    function addBoom(){
+      //判断重复
+
+      let i = 0;//不重复的个数
+      while(i < boomLen){
+        let temp = rnd();
+        if(!boomMap[temp]){
+          boomMap[temp] = true;
+          i++
+        }
+      }
+    }
+
+    addBoom();
+    bindEvent();
+
+    function displayitem(i){//
+      //有雷的判断
+      if(boomMap[i]){
+        aDiv[i].innerHTML = "雷";
+        // alert("你输了")
+        
+        return
+      }
+      // 显示周围的雷的数量
+      let temp = 0;
+      
+      //对点击的 i 这个位置进行判断,
+      //如果这个位置是在最左一列的,那么不需要判断左边
+      //如果这个位置是在最右一列的,那么不需要判断右边
+      (i%l>0)&&boomMap[i-l-1] && temp++;//左上
+      boomMap[i-l] && temp++;//上
+      (i%l<l-1)&&boomMap[i-l+1] && temp++;//右上
+      (i%l>0)&&boomMap[i-1] && temp++;//左
+      (i%l<l-1)&&boomMap[i+1] && temp++;//右
+      (i%l>0)&&boomMap[i+l-1] && temp++;//左下
+      boomMap[i+l] && temp++;//下
+      (i%l<l-1)&&boomMap[i+l+1] && temp++;//右下
+
+      //看起来比较难看,但是实际还是要有这么多判断
+
+      aDiv[i].innerHTML = temp;
+      return temp
+    }
+
+    function bindEvent(){//
+      for(let i= 0;i<aDiv.length;i++){
+        //功能: 判断当前i所在的位置该填什么
+        // aDiv[i].onclick = () => displayitem(i)//点击的位置
+        aDiv[i].onclick = () => displayitem(i)
+
+      }
+      
+    }
+    /*
+      1. 渲染棋盘
+
+      2. 添加炸弹列表(判断)
+        1. 生成一个随机整数(0-81)
+        2. 生成不重复的15个结果
+
+      3. 如果序号为炸弹,添加 * 如果不是炸弹,那么判断周围炸弹数并添加数值
+
+        1. 点击事件
+        2. 绑定一个函数(显示这个内容)
+
+      4. 代码执行顺序很重要! 
+    */
+  </script>
+</body>
+</html>

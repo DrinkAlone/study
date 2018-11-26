@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>document</title>
+    <meta name="keywords" content="关键字">
+    <meta name="description" content="网页广告描述">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        a {
+            text-decoration: none;
+            color: #fff;
+        }
+
+        ul, ol, li {
+            list-style: none;
+        }
+    </style>
+</head>
+<body>
+<div id="wrap"></div>
+
+<script>
+    let arr = [0,1,2,3,4,5,6,7,8,9],
+        len = arr.length;
+    let num = function (){
+        return Math.floor(Math.random()*len)
+    };
+
+    function resort(arr){
+        let arrRandom = [];
+        //重复获取这个
+        for(let i=0;i<len;i++){
+            //随机截取数组中的2个元素
+            arrRandom = arr.splice(num()%len-1,2);
+            if(arrRandom.length == 1){
+                arrRandom.push(arr.splice(num()%len-1,1)[0])
+            }
+            //添加到随机位置
+            arr.splice(num(),0,arrRandom[0]);
+            arr.splice(num(),0,arrRandom[1])
+        }
+        return arr
+    }
+    console.time();
+    resort(arr);
+    console.timeEnd()
+
+
+</script>
+</body>
+</html>

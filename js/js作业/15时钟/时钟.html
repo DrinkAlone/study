@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>document</title>
+    <meta name="keywords" content="关键字">
+    <meta name="description" content="网页广告描述">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        a {
+            text-decoration: none;
+            color: #fff;
+        }
+
+        ul, ol, li {
+            list-style: none;
+        }
+        #wrap .box{
+            float:left;
+            width:300px;
+            height:300px;
+            margin:20px 20px;
+            /*border:1px solid #666;*/
+        }
+        #wrap .box1 .time1{
+            width:100%;
+            height:100px;
+            margin-top:75px;
+            padding:25px 0;
+            background-color: #abcdef;
+            text-align:center;
+            font-size:30px;
+            font-weight:bold;
+            color:#fff;
+        }
+        #wrap .box1 .time1 span{
+            padding:0 20px;
+            color: #fff2f9;
+            letter-spacing: 5px;
+            transition:1s;
+        }
+        #wrap .box1 .time1 .date1{
+            margin-top:20px;
+            font-size:12px;
+            color:#666;
+            font-weight:lighter;
+        }
+        #wrap .box2 .time2{
+            width:100%;
+            height:150px;
+            margin-top:75px;
+            background-color: #abcdef;
+            text-align:center;
+            font-size:30px;
+            font-weight:bold;
+            color:#fff;
+        }
+        #wrap .box2 .time2 .date2{
+            padding:20px 0;
+            font-size:25px;
+            color:red;
+
+        }
+        #wrap .box2 .time2 .date{
+            color: #842fff;
+        }
+        #wrap .box2 .time2 span{
+            padding:0 20px;
+            line-height:40px;
+            color: #35ff0c;
+            font-size:30px;
+            transition:1s;
+        }
+        #wrap .box2 .time2 img{
+            width:100%;
+            height:100%;
+        }
+        #wrap .time3{
+            position:relative;
+            width:250px;
+            height:250px;
+            margin:25px auto;
+            border:1px solid #333;
+            border-radius:50%;
+            background-color: #abcdef;
+        }
+        #wrap .time3 span{
+            position:absolute;
+            width:10px;
+            height:10px;
+            text-align:center;
+            line-height:10px;
+            font-size:12px;
+        }
+        #wrap .time3 span:nth-child(1){
+            left:120px;
+            top:0;
+        }
+        #wrap .time3 span:nth-child(2){
+            top:120px;
+            right:0;
+        }
+        #wrap .time3 span:nth-child(3){
+            left:120px;
+            bottom:0;
+        }
+        #wrap .time3 span:nth-child(4){
+            top:120px;
+            left:0;
+        }
+        #wrap .time3 .run{
+            position:absolute;
+            transform-origin:center bottom;
+            //transition:1s;
+        }
+        #wrap .time3 .hours{
+            left:122px;
+            top:65px;
+            width:6px;
+            height:60px;
+            background-color: red;
+        }
+        #wrap .time3 .minutes{
+            left:123px;
+            top:35px;
+            width:4px;
+            height:90px;
+            background-color: green;
+
+        }
+        #wrap .time3 .seconds{
+            left:124px;
+            top:20px;
+            width:2px;
+            height:140px;
+            background-color: #842fff;
+            transform-origin: center 105px;
+            transform:rotateZ(0deg);
+        }
+        #wrap .time3 .circle{
+            position:absolute;
+            left:120px;
+            top:120px;
+            width:10px;
+            height:10px;
+            border-radius:50%;
+            background-color: #666;
+        }
+    </style>
+</head>
+<body>
+<div id="wrap">
+    <div class="box1 box">
+        <div class="time1 time">
+            <span></span>:
+            <span></span>:
+            <span></span>
+            <div class="date1"></div>
+        </div>
+    </div>
+    <div class="box2 box">
+        <div class="time2 time">
+            <div class="date2">距离双12还有<span class = "date">0</span>天</div>
+            <span>0</span>:
+            <span>0</span>:
+            <span>0</span>
+        </div>
+    </div>
+    <div class="box3 box">
+        <div class="time3 time">
+            <span>12</span><span>3</span><span>6</span><span>9</span>
+            <div class="run hours"></div>
+            <div class="run minutes"></div>
+            <div class="run seconds"></div>
+            <div class="circle"></div>
+        </div>
+    </div>
+</div>
+
+<script>
+    let time1 = document.querySelectorAll("#wrap .box1 .time1 span"),
+        date1 = document.querySelector("#wrap .box1 .time1 .date1"),
+
+        time2 = document.querySelectorAll("#wrap .box2 .time2 span"),
+        date2 = document.querySelector("#wrap .box2 .time2 .date2"),
+        show = document.querySelector("#wrap .box2 .time2"),
+
+        time3 = document.querySelectorAll("#wrap .box3 .time3 .run");
+    //当前时间
+    function inTime(){
+        let t1 = new Date();
+        time1[0].innerHTML = t1.getHours();
+        time1[1].innerHTML = t1.getMinutes();
+        time1[2].innerHTML = t1.getSeconds();
+        date1.innerHTML = t1
+    }
+    //倒计时
+    function countdown(){
+        let start = new Date();
+        let end = new Date(2018,11,12,0,0,0);
+        let t2 = new Date(end-start);
+        time2[0].innerHTML = t2.getDate()-1;
+        time2[1].innerHTML = t2.getUTCHours();
+        time2[2].innerHTML = t2.getMinutes();
+        time2[3].innerHTML = t2.getSeconds();
+        return t2.valueOf()
+    }
+    //圆盘时钟
+    function circletime(){
+        let t3 = new Date();
+        time3[0].style.transform =`rotateZ(${t3.getHours()%12*30+t3.getMinutes()%30}deg)`;
+        time3[1].style.transform =`rotateZ(${t3.getMinutes()*6}deg)`;
+        time3[2].style.transform =`rotateZ(${t3.getSeconds()*6}deg)`;
+        console.log(t3.getHours()%12*30+t3.getMinutes()%30)
+    }
+    //当前时间
+    setInterval(function(){inTime()},500);
+    //倒计时
+    let num = setInterval(function(){
+        countdown();
+        if(countdown()<=0){
+            show.innerHTML = `<img src="1.jpg">`;
+            clearInterval(num)
+        }
+    },500);
+    //圆盘时钟
+    setInterval(function(){circletime()},500)
+</script>
+</body>
+</html>

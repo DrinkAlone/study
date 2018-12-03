@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin:0;padding:0;list-style-type: none;
+        }
+        .list{
+            position: absolute;
+            width: 800px;
+            height: 500px;
+            border: 1px black solid;
+        }
+        .list>li{
+            position: absolute;
+            bottom: 0;
+            /* width: 40px; */
+            height: 500px;
+            box-shadow: 0 0 10px #ccc inset;
+            transition: .1s;
+        }
+    </style>
+</head>
+<body>
+    <ul class="list">
+    </ul>
+    <script>
+        let list = document.querySelector(".list")
+        
+        let len = 80
+        let temp = ""
+        for(let i=0;i<len;i++){
+            temp+=`<li></li>`
+        }
+        list.innerHTML = temp
+        let aLi = document.querySelectorAll(".list>li")
+
+        //随机颜色  字符串 rgb(0-255, )
+
+        //如何进行排序? 
+
+        //回调函数: 单个元素本身 下标 数组
+        aLi.forEach((i,j)=>{
+            i.style.left = j*(800/len)+"px"
+            i.style.width = 800/len+"px"
+            i.style.height = (j+1)*(500/len)+"px"
+            i.style.backgroundColor = `rgb(${r()},${r()},${r()})`
+        })
+        
+        function r(min = 0,max = 256){//0-255的整数(包含255)
+            return Math.floor(Math.random()*(max-min)+min)
+        }
+        function returnArr(str){
+            if(str==="顺序"){
+                return new Array(len).fill(0).map((i,j)=>j)
+            }
+            if(str==="倒叙"){
+                return new Array(len).fill(0).map((i,j)=>j).reverse()
+            }
+            if(str==="乱序"){
+                return new Array(len).fill(0).map((i,j)=>j).sort(()=>Math.random()-.5)
+            }
+            return new Array(len).fill(0).map((i,j)=>j)
+        }
+
+        function render(order){//渲染: 修改他的left值
+            aLi.forEach((i,j)=>{
+                i.style.left = order[j]*(800/len)+"px"
+            })  
+        }
+        render(returnArr("乱序"))
+        // function count(){
+        //     var k = 0
+        //     return function(){
+        //         return k++
+        //     }
+        // }
+        let c = 1
+        function bubbleSort(arr){
+            function swap(i,j){
+                [arr[i], arr[j]]=[arr[j], arr[i]]
+            }
+            for(let j = 0, l = arr.length; j<l;j++){
+                for (let i = 0; i < l - 1 - j; i++) {
+                    setTimeout(function(){
+                        //为了把交换和判断变成有延时效果的内容
+                        if (arr[i] > arr[i + 1]) {//原来i就变了!!
+                            swap(i, i+1)//交换
+                            render(arr)
+                        }
+                    }, (c++)*100)
+                }
+            }
+        }
+        let order = returnArr("乱序")
+
+        var order2 = [...order]
+        //保证初始乱序的情况是一样的
+        let t = 1
+        function swap(arr, i, j){
+            //swap 交换两个元素
+
+            /*
+                不能直接让原数组延时交换,
+                    分成两个部分.. 长得一模一样: 
+                    1. 数组1. 
+                        用来做快速排序得出交换的所有元素的序列
+                    2. 数组2.
+                        模拟: 在异步中执行: 
+            */
+            [arr[i], arr[j]] = [arr[j], arr[i]]
+            setTimeout(()=>{
+                render(order2);
+
+                [order2[i], order2[j]] = [order2[j], order2[i]]
+            },100*(t++))
+            if(i===j) return 
+        }
+        function findMid(arr, i, j) {
+                while ( i < j ){
+                    while( i<j && arr[i] <= arr[j]){
+                        j--
+                    }
+                    swap(arr, i , j)
+                    while(i < j &&  arr[i] <= arr[j]){
+                        i++
+                    }
+                    swap(arr, i, j)
+                }
+                return i
+            }
+
+        function qsort(arr, i = 0, j = arr.length-1) {
+            if (i > j) return 
+            let mid = findMid(arr,  i, j)
+            qsort(arr, i, mid - 1)
+            qsort(arr, mid + 1, j)
+        }
+       
+        // bubbleSort(order)
+        qsort(order)
+    </script>
+</body>
+</html>

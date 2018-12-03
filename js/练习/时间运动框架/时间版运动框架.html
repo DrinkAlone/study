@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .box{
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100px;
+            height: 100px;
+            background-color: #ccc;
+            transform: rotate(0deg);
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+    <script>
+        /*
+            框架: 方便我们去开发,直接可以使用,存在很多优秀的api
+
+            有一些操作,其实本质上都是相同的流程.
+                移动,宽高,....
+
+            变成一个函数: 
+                传入一个对象, 目标, 时间, 结束之后的触发.
+
+           时间版运动框架: 
+        */
+       
+
+        /*
+            运动必须的条件: 
+            时间(有) * 速度(没有!) = 结束位置(有) - 初始位置(有)
+            速度 = (结束位置 - 初始位置)/总时间
+                单位时间的运动量
+
+            如何去确定每一个时刻这个盒子应该在的位置???
+
+            某一个时刻的位置 = 初始位置 + 当前运行的时间(?) * 速度
+
+            但是: 我们学过时间对象.在执行代码move的时候,
+            有一个初始时间(t0) new Date()
+
+            运行的过程中 你可以得到此时的时间(t1)
+
+
+            某一个时刻的位置 = 初始位置+(t1-t0)*速度
+                代码的核心! 
+
+
+            
+            怎么个流程: 
+                1. 获取当前时间: t0
+                2. 获取速度
+                    2.1 获取元素的目标位置
+                    2.2 获取元素的初始位置
+                    2.3 获取总的运行时间
+                    2.3 计算: 速度 = (结束位置 - 初始位置)/总时间
+                3. 每一个时刻??(定时器)
+                    3.1 获取当前的时间t1(?)
+                    3.2 计算: 某一个时刻的位置 = 初始位置+(t1-t0)*速度
+                    3.3 渲染: 把元素的样式修改成这个时刻的位置.
+                4. 结束判断
+                    4.1 判断时间到了目标时间没.如果没到, 继续3.如果到了.
+                    4.2 停止定时器. 将位置修改成为目标位置
+                    4.3 执行回调
+        
+        */
+        let box = document.querySelector(".box")
+        move(//加速减速 贝赛尔曲线..
+            box,
+            {
+                left: 100,
+                top: 100,
+                width: 200
+            },
+            5000,
+            function(){
+                //回调函数存在的意义是什么, 回调函数的运行主体是谁?
+                console.log(this.innerHTML = "运动结束了")
+            }
+        )
+        function getStyle( el ){
+            return el.currentStyle || getComputedStyle( el )
+        }
+        function move(el, json, time, callback){
+            /*
+                匀速版
+                el: 元素,
+                json: 目标状态参数,
+                time: 运动时间ms
+                callback: 回调函数,让这个运动状态结束之后,
+                才去执行的代码
+            */
+
+            //写代码?
+
+            let t0 = new Date()//初始时间
+
+            let speedValue = {}// 所有的速度的对象
+            let startValue = {}//所有的初始状态的对象
+            //遍历JSON对象的属性名,通过属性名来确定start speed
+            let startStyle = getStyle(el)
+            for(let key in json){
+                startValue[key] = parseInt(startStyle[key])//获取初始值的数值, 
+                //单位省略掉了
+                speedValue[key] = (json[key] - startValue[key])/time
+            }
+            //计算出所有的初始值和速度值.
+            
+            //定时器: 时刻的制定,渲染周期: 1000/60
+
+            function run(){
+                let t1 = new Date()
+                for(let key in speedValue){//根据时间变化来调整位置
+                    let value = startValue[key]+(t1-t0)*speedValue[key]
+                    el.style[key] = value+"px"//设置元素的具体值
+                }
+                if(t1-t0 >= time){
+                    cancelAnimationFrame(run)//把函数名传入就可以了
+                    // clearInterval(timer)
+                    callback && callback.call( el )
+                }else{
+                    requestAnimationFrame( run )
+                }
+            }
+            run()
+            // 运行状态百分比
+            /*
+                3000ms
+
+                1000ms 请问位置要改变多少?
+
+                1000ms*speedValue
+            */
+
+        }
+        
+
+        //元素的初始样式该如何获取?
+
+        //getBoundingClientRect任何dom对象身上的方法,返回了一个元素的位置大小样式.
+
+        //getComputedStyle 获取元素身上的所有样式..
+
+        let boxStyleList = window.getComputedStyle(box)
+
+        // 获取样式的封装, ie 获取方式box.currentStyle, IE8以上
+
+        // setInterval  无限次定时运行
+
+        // 
+        // 运行的时候是会在线程空闲的时候运行 
+        // setTimeout 单次运行
+
+        // requestAnimationFrame
+        // 从一个虚拟的时间线中抽离出来. 
+
+        //浏览器刷新一次,就渲染一次. 
+
+        // 页面渲染的回调: 回避了定时器的运行不均匀的问题
+
+        //requestAnimationFrame(回调函数)
+        //显示器下次刷新页面的时候就执行这个代码
+
+        // function fn(){
+        //     // document.onclick = fn
+        //     requestAnimationFrame (fn)//添加下次刷新页面需要注册事件
+        //     //你要执行的内容(多久执行一次，每次刷新一次执行一次)
+        //     //节省性能! 
+        //     console.log(1)
+        //     // fn()
+        // }
+        // fn()
+
+        //css3 的 animation transition  底层等价于 requestAnimationFrame 
+
+        
+        
+
+    </script>
+</body>
+</html>

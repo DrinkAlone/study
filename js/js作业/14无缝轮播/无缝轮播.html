@@ -23,11 +23,12 @@
             list-style: none;
         }
         #wrap {
-            overflow:hidden;
+            /*overflow:hidden;*/
             width:820px;
             height:340px;
             margin:20px auto;
-            border:1px solid #666;
+            border:5px solid red
+        ;
 
         }
         #wrap .banner{
@@ -51,7 +52,8 @@
 
 <script>
     let banner =document.querySelector("#wrap .banner"),
-        list = document.querySelectorAll("#wrap .banner img");
+        list = document.querySelectorAll("#wrap .banner img"),
+        ali = document.querySelectorAll("#wrap .banner li")
     let index = 1,
         index1 = 2;
 
@@ -89,18 +91,18 @@
                 banner.style.left = "0px";
                 banner.style.transition= "0s";
                 list[0].src =`images/${index}.jpg`;
-                list[1].src =`images/${index1}.jpg`
+                list[1].src =`images/${index1}.jpg`;
             },1000)
         }else{
+            list[1].src =`images/${index}.jpg`;
 
-             chage(dir);
-             // console.log(index);
-             // console.log(index1);
-             list[0].src =`images/${index}.jpg`;
-             list[1].src =`images/${index1}.jpg`
+            chage(dir)
+            list[0].src =`images/${index1}.jpg`;
+            list[1].src =`images/${index}.jpg`;
+
         }
     }
-    setInterval(move,3000,"left")
+    //setInterval(move,3000,"left")
 
 </script>
 </body>

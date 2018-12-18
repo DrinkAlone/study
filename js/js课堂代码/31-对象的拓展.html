@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        
+
+        /*
+            对象: 
+
+                常用API: 如何去遍历对象的属性的?
+
+                for...in( 可枚举 )
+
+            entries()和keys()和values()
+
+            Object 下面的方法
+
+        */
+
+
+        // let o = {b:2,a:1,c:3,b:"2"}
+
+        // o.e = 5
+        // o.d = 4
+        // o.b = 3
+
+        // 完全不能作为参考, 
+        // 进行有序化操作的时候才有意义
+
+
+        // for(let i of Object.entries(o)){
+        //     console.log(i)
+        // }
+        // //结构赋值
+
+        // for(let [key, value] of Object.entries(o)){
+        //     console.log(key, value)
+        // };
+        // //访问我们的键名
+        // for(let key of  Object.keys(o)){
+        //     console.log(key)
+        // }
+        
+        // Object.values(o)
+        // 访问键值的操作
+
+        // 这里面先后顺序是什么?
+        // 跟书写顺序有关系,本质是添加属性的顺序..
+        
+        // 解构赋值
+
+        // let {x,y} = {x:1,y:2}
+        // o1 o2
+        // let {x: x, y: y} = {x: 1, y: 2}
+
+        // let x = o1.x = o2.x
+        // let y = o1.y = o2.y
+
+        //属性名和值合并: 同名! 
+        
+
+        // 对象的get和set的方法: 底层原理跟他有关系.
+
+
+        // 对象属性的存在的两种操作: 访问变得可以监控控.
+
+            // 1. 读取值, 2.写入(覆盖)值 ()
+
+            // 3. 
+
+
+        // var o = {
+        //     // value: 3, 读取value值这里我做了一些手脚, 
+        //     _v: 1,
+        //     _count: 0,
+        //     get value(){// 读取值运行的函数
+        //         this._count++;
+        //         console.log(`value被读取了${this._count}次`)
+        //         return this._v//this是o
+        //     },
+        //     set value(val){// val = 后面写的值
+        //         //报警 打110! 备个案
+        //         console.log("FBI WARNING!")
+        //         // 
+        //         this._v = val
+        //         return this._v
+        //     }
+        // }
+        // 
+
+        //
+
+        // Object.is  == === 
+        // NaN比较结果和+0-0比较结果相反. 
+
+        // if(num == NaN){
+        //     //
+        // }
+
+        // 一个正数必然存在一个负数 第一位储存符号
+
+        // 0的第一位可能为正也可能为负, 
+
+        // +0, -0
+
+        // Object.assign(o1, o2)
+        // 复制将o2对象上的属性复制到o1上
+
+        // var o1 = {a:1,b:2}
+        // var o2 = {b:3,c:4,d:5}
+
+        // 属性的特点: 
+        //属性存在值
+        var o = {a:1,b:2,c:3};
+        // o.a 有值的, 
+        // 是否可以被修改.  直接控制属性是否可以被修改
+        // writable 
+        // 是否可以被枚举 for...in  是否可以让某个属性不能被枚举.
+        // enumerable 是否可以被枚举.  
+        // 上述特性 是否可以被修改
+        // configurable 是否可以被设置..
+        // 为什么length没有被遍历出来
+        // o["a"]
+        // ES5 方法
+        // 
+        // Object.defineProperty(o, "d",{
+        //     // 有更多选择,更安全,写起来更复杂
+        //     value: 4,//属性值 o.d = 4 设置,
+        //     writable: false,//不可修改
+        //     enumerable: true,//不可被枚举
+        //     configurable: false,//锁闭这个操作
+        // })
+        // for(let i in o){
+	    //     console.log(i)
+        // }
+        //写法A 
+        var data1;
+        var data2;// 设计模式.
+        
+
+        Object.defineProperty(o, "d",{
+            // 获取值
+            // VUE 双向数据绑定: 
+            get: function(){
+                
+            },
+            //设置值 
+            set: function(){
+
+            }
+        })
+        // 
+        // vue: 
+        // angular: 
+        
+
+
+    </script>
+</body>
+</html>

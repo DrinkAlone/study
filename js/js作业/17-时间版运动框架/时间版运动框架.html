@@ -1,6 +1,6 @@
 <head>
     <meta charset="UTF-8">
-    <title>49期</title>
+    <title>追风少年</title>
     <meta name="keywords" content="关键字">
     <meta name="description" content="网页广告描述">
     <style>
@@ -31,7 +31,7 @@
 
 
 <script>
-    let box = document.getElementById("wrap")
+    let box = document.getElementById("wrap");
     move(
         box,
         {
@@ -43,20 +43,20 @@
         function(){
             this.innerHTML = "运动完成了"
         }
-    )
+    );
     function move(box,JSON,time,callback){
         //1. 获取当前时间: t0
-        let t0 = new Date()
+        let t0 = new Date();
         //2. 获取速度
             //2.1 获取元素的目标状态
         function getStyle(box){
             return box.currentStyle || getComputedStyle(box )
         }
-        let speedValue = {}
-        let startValue = {}
+        let speedValue = {};
+        let startValue = {};
         for(let i in JSON){
-            startValue[i] = getStyle(box)[i]
-            speedValue[i]= (JSON[i]-startValue[i])/time
+            startValue[i] = getStyle(box)[i];
+            speedValue[i]= (JSON[i]-startValue[i])/time;
             console.log(speedValue);
         }
             //2.2 获取元素的初始位置
@@ -64,13 +64,13 @@
             //2.3 计算: 速度 = (结束位置 - 初始位置)/总时间
         //3. 每一个时刻??(定时器)
         function run(){
-            let t1 = new Date()
+            let t1 = new Date();
             for(let key in speedValue){//根据时间变化来调整位置
-                let value = startValue[key]+(t1-t0)*speedValue[key]
+                let value = startValue[key]+(t1-t0)*speedValue[key];
                 box.style[key] = value//设置元素的具体值
             }
             if(t1-t0 >= time){
-                cancelAnimationFrame(run)//把函数名传入就可以了
+                cancelAnimationFrame(run);//把函数名传入就可以了
                 // clearInterval(timer)
                 callback && callback.call( box )
             }else{

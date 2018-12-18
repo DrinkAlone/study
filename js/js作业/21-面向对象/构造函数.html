@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>追风少年</title>
+    <meta name="keywords" content="关键字">
+    <meta name="description" content="网页广告描述">
+    <style>
+        *{margin: 0;padding: 0;}a{text-decoration: none;}ul,ol,li{list-style: none;}
+        #wrap{
+            width:300px;
+            height:30px;
+            margin:20px auto;
+            text-align:center;
+            user-select:none;
+        }
+        .left{
+            float:left;
+            width:100px;
+            height:30px;
+            background-color: #f60;
+            cursor:pointer;
+        }
+        .right{
+            float:right;
+            width:100px;
+            height:30px;
+            background-color: #f60;
+            cursor:pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <div class="left">左点击</div>
+        <div class="right">右点击</div>
+    </div>
+    <div id="box"></div>
+
+
+<script>
+    let left = document.querySelector("#wrap .left"),
+        right = document.querySelector("#wrap .right"),
+        box = document.querySelector("#box");
+
+    function CreatElement(type ="div"){
+
+    }
+    CreatElement.prototype = {
+        creat:function (){
+            box.innerHTML = `<${type}></${type}>`
+        }
+    };
+    function CreatCircle(){//
+        // 样式区别
+        this.style.width= "50px";
+        this.style.height= "50px";
+        this.style.backgroundColor= "red"
+    }
+    CreatCircle.prototype = new CreatElement;
+    left.onclick = () =>new CreatCircle()
+    //right.onclick = () => new CreateTri()
+
+
+</script>
+
+</body>
+</html>

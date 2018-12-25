@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>追风少年</title>
+    <meta name="keywords" content="关键字">
+    <meta name="description" content="网页广告描述">
+    <style>
+        *{margin: 0;padding: 0;}a{text-decoration: none;}ul,ol,li{list-style: none;}
+        body{
+            height:8000px;
+            background:url("./1.jpg") no-repeat center/100% 100%;
+            background-attachment:fixed;
+        }
+        #wrap {
+            position:absolute;
+            left:0;
+            width:100px;
+            height:100px;
+            background-color: red;
+        }
+    </style>
+    <script src="js/Move.js"></script>
+    <script src="js/CreatBox.js"></script>
+</head>
+<body>
+    <div id="wrap"></div>
+
+
+    <script>
+        let oWrap = document.querySelector("#wrap");
+       setTimeout(()=>new Dialog(),1000)
+        // //Move(oWrap,5000,{position:"absolute",
+        //     top:"10px",
+        //     right:"10px",
+        //     width:"30px",
+        //     height:"30px",
+        //     background:"url('./close.jpg') no-repeat center center /cover",
+        //     cursor:"pointer",
+        //     transition:"1s"})
+        //let a =new CreatBox(oWrap)
+
+    </script>
+
+</body>
+</html>

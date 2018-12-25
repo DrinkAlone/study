@@ -28,12 +28,15 @@
             background-color: #f60;
             cursor:pointer;
         }
+        #box div{
+            float:left;
+        }
     </style>
 </head>
 <body>
     <div id="wrap">
-        <div class="left">左点击</div>
-        <div class="right">右点击</div>
+        <div class="left">圆点击</div>
+        <div class="right">三角点击</div>
     </div>
     <div id="box"></div>
 
@@ -42,26 +45,50 @@
     let left = document.querySelector("#wrap .left"),
         right = document.querySelector("#wrap .right"),
         box = document.querySelector("#box");
-
-    function CreatElement(type ="div"){
-
-    }
-    CreatElement.prototype = {
-        creat:function (){
-            box.innerHTML = `<${type}></${type}>`
+    let num = 0;
+    class CreatElement{
+        constructor(){
         }
-    };
-    function CreatCircle(){//
-        // 样式区别
-        this.style.width= "50px";
-        this.style.height= "50px";
-        this.style.backgroundColor= "red"
+        creat(){
+            box.innerHTML += "<div></div>"
+        }
     }
-    CreatCircle.prototype = new CreatElement;
-    left.onclick = () =>new CreatCircle()
-    //right.onclick = () => new CreateTri()
-
-
+    class CreatCircle extends CreatElement{
+        constructor(){
+            super()
+        }
+        circle(){
+            let odiv = document.querySelectorAll("#box div")[num];
+            odiv.style.width= "50px";
+            odiv.style.height= "50px";
+            odiv.style.borderRadius= "50%";
+            odiv.style.backgroundColor= "red"
+        }
+    }
+    class CreatTriangle extends CreatElement{
+        constructor(){
+            super()
+        }
+        triangle(){
+            let odiv = document.querySelectorAll("#box div")[num];
+            odiv.style.width= "0px";
+            odiv.style.height= "0px";
+            odiv.style.border= "25px solid transparent";
+            odiv.style.borderBottomColor="red"
+        }
+    }
+    left.onclick =()=>{
+        let circle = new CreatCircle;
+        circle.creat();
+        circle.circle();
+        num++
+    };
+    right.onclick =()=>{
+        let triangle = new CreatTriangle;
+        triangle.creat();
+        triangle.triangle();
+        num++
+    }
 </script>
 
 </body>

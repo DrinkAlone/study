@@ -50,7 +50,7 @@
         //2. 获取速度
             //2.1 获取元素的目标状态
         function getStyle(box){
-            return box.currentStyle || getComputedStyle(box )
+            return box.currentStyle || getComputedStyle(box)
         }
         let speedValue = {};
         let startValue = {};
@@ -74,17 +74,17 @@
                 // clearInterval(timer)
                 callback && callback.call( box )
             }else{
-                requestAnimationFrame( run )
-            }
-        }
-        run()
-            //3.1 获取当前的时间t1(?)
-            //3.2 计算: 某一个时刻的位置 = 初始位置+(t1-t0)*速度
-            //3.3 渲染: 把元素的样式修改成这个时刻的位置.
-        //4. 结束判断
-            //4.1 判断时间到了目标时间没.如果没到, 继续3.如果到了.
-            //4.2 停止定时器. 将位置修改成为目标位置
-            //4.3 执行回调
+        requestAnimationFrame( run )
+    }
+    }
+    run()
+    //3.1 获取当前的时间t1(?)
+    //3.2 计算: 某一个时刻的位置 = 初始位置+(t1-t0)*速度
+    //3.3 渲染: 把元素的样式修改成这个时刻的位置.
+    //4. 结束判断
+    //4.1 判断时间到了目标时间没.如果没到, 继续3.如果到了.
+    //4.2 停止定时器. 将位置修改成为目标位置
+    //4.3 执行回调
     }
 </script>
 </body>

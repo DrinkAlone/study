@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>追风少年</title>
+    <meta name="keywords" content="关键字">
+    <meta name="description" content="网页广告描述">
+
+    <style>
+        *{margin: 0;padding: 0;}a{text-decoration: none;}ul,ol,li{list-style: none;}
+        html,body{
+            height:100%;
+        }
+        #wrap{
+            position:relative;
+            width:100%;
+            height: 100%;
+            overflow:hidden;
+        }
+        #wrap .pagelist{
+            position:absolute;
+            width:100%;
+            height:100%;
+            transition:1s;
+        }
+
+        /*#wrap{*/
+            /*width:500px;*/
+            /*height:200px;*/
+        /*}*/
+
+        #wrap .pagelist{
+            width:100%;
+            height:100%;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <div class="pagelist"></div>
+        <div class="pagelist"></div>
+        <div class="pagelist"></div>
+        <div class="pagelist"></div>
+
+    </div>
+    <script src="./js/FullPage.js"></script>
+
+    <script>
+
+
+        let fullpage = new FullPage({
+            el:"wrap",//大盒子
+            time:1000,//时间
+            colorList:["red","yellow","blue","green"],
+            direction:"vertical",//horizontal  方向
+            callback:function(){
+                console.log(this.page);}
+        })
+
+    </script>
+
+
+</body>
+</html>

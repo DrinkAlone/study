@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>追风少年</title>
+    <meta name="keywords" content="关键字">
+    <meta name="description" content="网页广告描述">
+    <style>
+        *{margin: 0;padding: 0;}a{text-decoration: none;}ul,ol,li{list-style: none;}
+        #wrap{
+            width:100px;
+            height:100px;
+            margin:50px;
+            background-color:red;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap"></div>
+
+
+    <script>
+        let downX=0,
+            downY=0,
+            type = false;
+        function down(e){
+            e =window.event;
+            let span = document.createElement("selec");
+                downX=e.clientX;
+                downY=e.clientY;
+            document.body.appendChild(span);
+            span.style.position="absolute";
+            span.style.backgroundColor="skyblue";
+            span.style.opacity = ".6";
+            span.style.left = downX+"px";
+            span.style.top = downY+"px";
+            type = true
+        }
+        function move(e){
+            e=window.event;
+            let span = document.querySelector("body selec");
+                moveX = e.clientX,
+                moveY = e.clientY;
+            span.style.width=(moveX-downX)+"px";
+            span.style.height=(moveY-downY)+"px"
+            
+        }
+        function up(cb=()=>{}){
+            window.onmousemove = null;
+            cb()
+        }
+        window.onmousedown = function(){
+            down();
+            window.onmousemove = function(){
+                if(type)move()
+
+            }
+        };
+        window.onmouseup = function(){
+            up();
+            type=false;
+            setTimeout(()=>{
+                let span = document.querySelector("body selec");
+                span.parentNode.removeChild(span)
+            },500)
+        }
+
+        //1.按下鼠标  获取到鼠标的位置
+        //2移动鼠标  生成一个移动XY大小的盒子
+        //3.抬起鼠标  区域中的选中元素颜色改变
+    </script>
+
+</body>
+</html>

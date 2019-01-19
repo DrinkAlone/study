@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>追风少年</title>
+    <meta name="keywords" content="关键字">
+    <meta name="description" content="网页广告描述">
+    <style>
+        *{margin: 0;padding: 0;}a{text-decoration: none;}ul,ol,li{list-style: none;}
+        body{
+            height:5000px;
+        }
+        #wrap{
+            position:fixed;
+            bottom:50px;
+            right:50px;
+            width:40px;
+            height:40px;
+            background-color: #abcdef;
+            text-align:center;
+            line-height:50px;
+            font-size:25px;
+            cursor:pointer;
+            user-select:none;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap"> ^ </div>
+
+
+    <script>
+        let oWrap = document.querySelector("#wrap");
+        let value = 0;
+        window.onscroll =()=>{
+            value = document.documentElement.scrollTop
+        };
+        function goTop(){
+            if(value <= 0) return;
+            value-=50;
+            document.documentElement.scrollTop = value;
+            if(value>0)requestAnimationFrame(goTop);
+            console.log(value);
+        }
+
+        oWrap.addEventListener("click",goTop)
+    </script>
+
+</body>
+</html>

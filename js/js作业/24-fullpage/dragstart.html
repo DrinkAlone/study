@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>追风少年</title>
+    <meta name="keywords" content="关键字">
+    <meta name="description" content="网页广告描述">
+    <style>
+        *{margin: 0;padding: 0;}a{text-decoration: none;}ul,ol,li{list-style: none;}
+        #wrap{
+            position:absolute;
+
+            width:500px;
+            height:500px;
+            padding:50px;
+            background:url("1.jpg") no-repeat center/cover;
+            cursor:pointer;
+
+        }
+        #wrap >div{
+            position:absolute;
+            width:100px;
+            height:100px;
+            line-height:100px;
+            font-size:25px;
+            color:#000;
+            text-align:center;
+            cursor:pointer;
+            user-select:none;
+            opacity:.8;
+        }
+        #wrap .box1{
+            top:50px;
+            left:50px;
+            background-color: #ff0;
+        }
+        #wrap .box2{
+            top:50px;
+            left:150px;
+            background-color: #ff0000;
+        }
+        #wrap .box3{
+            top:50px;
+            left:250px;
+            background-color: #f0f;
+        }
+
+        #wrap .box4{
+            top:150px;
+            left:50px;
+            background-color: #842f;
+        }
+        #wrap .box5{
+            top:150px;
+            left:150px;
+            background-color: #ab8e66;
+        }
+        #wrap .box6{
+            top:150px;
+            left:250px;
+            background-color: #35ff0c;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <div class="box1">第一个</div>
+        <div class="box2">第二个</div>
+        <div class="box3">第三个</div>
+        <div class="box4">第四个</div>
+        <div class="box5">第五个</div>
+        <div class="box6">第六个</div>
+    </div>
+
+
+    <script>
+        //拖动大图框
+        //拖动小图框  小图框动  大图框不动
+        let owrap =document.querySelector("#wrap");
+        owrap.addEventListener("mousedown",function(e){
+            let startLeft = e.screenX,
+                startTop =e.screenY;
+            console.log(startTop);
+            owrap.addEventListener("mousemove",function run(e){
+                let endLeft = e.screenX,
+                    endTop =e.screenY;
+                owrap.style.left = endLeft-startLeft+"px";
+                owrap.style.top = endTop-startTop+"px";
+                if((endTop - startTop) !==0){
+                    owrap.addEventListener("mouseup",function(e){
+                        owrap.style.left = endLeft-startLeft+"px";
+                        owrap.style.top = endTop-startTop+"px";
+                        owrap.removeEventListener("mousemove",run)
+                    })
+                }
+
+            })
+
+        })
+        // let owrap =document.querySelector("#wrap")
+        // owrap.Top =100
+
+    </script>
+
+</body>
+</html>

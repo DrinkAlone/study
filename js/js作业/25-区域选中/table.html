@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>追风少年</title>
+    <meta name="keywords" content="关键字">
+    <meta name="description" content="网页广告描述">
+    <style>
+        *{margin: 0;padding: 0;}a{text-decoration: none;}ul,ol,li{list-style: none;}
+
+    </style>
+</head>
+<body>
+    <div id="wrap"></div>
+
+
+    <script>
+        class Table{
+            constructor(el){
+                this.mode="draw";
+                this.table=document.querySelector(el);
+                this.boxList = [];
+                this.currentBox= null;
+                this.dragbox=null;
+                this.register()
+            }
+            //注册事件
+            register(){
+                this.addMethod()
+            }
+            addMethod(){
+                window.addEventListener("mousedown",(e)=>{
+                    console.log(e.target);
+                })
+            }
+        }
+        //生成盒子
+        class Square{
+            constructor(point){
+                this.startPoint =point;
+                this.endPoint =point;
+                this.draw = true;
+                this.dragable = false;
+                this.dragStartPoint =null;
+                this.init()
+            }
+            init(){
+                this.box = document.createElement("table-selec");
+                this.box.style.position ="absolute";
+                this.box.style.backgroundColor="skyblue";
+                this.box.style.opacity = ".6"
+            }
+            //注册事件
+            register(){
+
+            }
+
+        }
+        let table = new Table("body")
+    </script>
+
+</body>
+</html>

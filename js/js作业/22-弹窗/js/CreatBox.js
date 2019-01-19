@@ -96,7 +96,8 @@ class CreatBox{
     }
     //关闭节点
     closeBox(){
-        this.el.style.display ="none"
+        this.el.style.display ="none";
+        return this
     }
     //删除节点
     removeNode(){
